@@ -1,0 +1,75 @@
+{
+  "source_root": "C:\\Users\\alien\\scriptorium-arcontico punto cero",
+  "entries": [
+    {
+      "source": "assets/arconte/01.jpg",
+      "target": "assets/arconte/01.jpg",
+      "reason": "Usado por kerigma acto0, acto2 y reel_template."
+    },
+    {
+      "source": "assets/arconte/02.jpg",
+      "target": "assets/arconte/02.jpg",
+      "reason": "Usado por kerigma acto0, acto2 y reel_template."
+    },
+    {
+      "source": "assets/arconte/03.jpg",
+      "target": "assets/arconte/03.jpg",
+      "reason": "Usado por kerigma acto0, acto2 y reel_template."
+    },
+    {
+      "source": "assets/arconte/04.jpg",
+      "target": "assets/arconte/04.jpg",
+      "reason": "Usado por kerigma acto2 y reel_template."
+    },
+    {
+      "source": "audio/silencio_arconte.wav",
+      "target": "audio/silencio_arconte.wav",
+      "reason": "Audio base realmente presente en el origen tecnico."
+    },
+    {
+      "source": "pipelines/capcut_pack/madonna_hibrida_pack/assets/01.jpg",
+      "target": "pipelines/capcut_pack/madonna_hibrida_pack/assets/01.jpg",
+      "reason": "Asset oficial del pack CapCut usado por kerigma acto5."
+    },
+    {
+      "source": "pipelines/capcut_pack/madonna_hibrida_pack/assets/02.jpg",
+      "target": "pipelines/capcut_pack/madonna_hibrida_pack/assets/02.jpg",
+      "reason": "Asset oficial del pack CapCut usado por kerigma acto5."
+    },
+    {
+      "source": "pipelines/capcut_pack/madonna_hibrida_pack/assets/03.jpg",
+      "target": "pipelines/capcut_pack/madonna_hibrida_pack/assets/03.jpg",
+      "reason": "Asset oficial del pack CapCut usado por kerigma acto5."
+    },
+    {
+      "source": "pipelines/capcut_pack/madonna_hibrida_pack/assets/04.jpg",
+      "target": "pipelines/capcut_pack/madonna_hibrida_pack/assets/04.jpg",
+      "reason": "Asset oficial del pack CapCut preservado para trazabilidad del paquete."
+    },
+    {
+      "source": "pipelines/capcut_pack/madonna_hibrida_pack/audio/silencio_arconte.wav",
+      "target": "pipelines/capcut_pack/madonna_hibrida_pack/audio/silencio_arconte.wav",
+      "reason": "Audio incluido en el pack CapCut oficial."
+    },
+    {
+      "source": "pipelines/capcut_pack/madonna_hibrida_pack/assets/01.jpg",
+      "target": "assets/madonna_hibrida/01.jpg",
+      "reason": "Alias con evidencia: el pack oficial contiene 01.jpg y madonna_hibrida_acto2.capcut.json referencia assets/madonna_hibrida/01.jpg."
+    },
+    {
+      "source": "pipelines/capcut_pack/madonna_hibrida_pack/assets/02.jpg",
+      "target": "assets/madonna_hibrida/02.jpg",
+      "reason": "Alias con evidencia: el pack oficial contiene 02.jpg y madonna_hibrida_acto2.capcut.json referencia assets/madonna_hibrida/02.jpg."
+    },
+    {
+      "source": "pipelines/capcut_pack/madonna_hibrida_pack/assets/03.jpg",
+      "target": "assets/madonna_hibrida/03.jpg",
+      "reason": "Alias con evidencia: el pack oficial contiene 03.jpg y madonna_hibrida_acto2.capcut.json referencia assets/madonna_hibrida/03.jpg."
+    },
+    {
+      "source": "pipelines/capcut_pack/madonna_hibrida_pack/assets/04.jpg",
+      "target": "assets/madonna_hibrida/04.jpg",
+      "reason": "Alias con evidencia: el pack oficial contiene 04.jpg y madonna_hibrida_acto2.capcut.json referencia assets/madonna_hibrida/04.jpg."
+    }
+  ]
+}

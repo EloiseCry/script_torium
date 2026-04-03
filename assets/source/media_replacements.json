@@ -1,0 +1,52 @@
+{
+  "version": 1,
+  "placeholder_sets": [
+    {
+      "id": "madonna_hibrida_template",
+      "family": "madonna_hibrida",
+      "pipeline": "pipelines/reels/madonna_hibrida/madonna_hibrida_template.arc",
+      "notes": "Plantilla generica de acto para Madonna Hibrida. Los placeholders no deben contarse como media final.",
+      "placeholders": [
+        {
+          "ref": "assets/madonna_hibrida/__01.jpg",
+          "slot": "visual_1",
+          "kind": "image",
+          "accepted_patterns": ["assets/madonna_hibrida/*.jpg"],
+          "preview_candidate": "assets/madonna_hibrida/01.jpg",
+          "replacement_role": "hero_opening"
+        },
+        {
+          "ref": "assets/madonna_hibrida/__02.jpg",
+          "slot": "visual_2",
+          "kind": "image",
+          "accepted_patterns": ["assets/madonna_hibrida/*.jpg"],
+          "preview_candidate": "assets/madonna_hibrida/02.jpg",
+          "replacement_role": "hero_mid_1"
+        },
+        {
+          "ref": "assets/madonna_hibrida/__03.jpg",
+          "slot": "visual_3",
+          "kind": "image",
+          "accepted_patterns": ["assets/madonna_hibrida/*.jpg"],
+          "preview_candidate": "assets/madonna_hibrida/03.jpg",
+          "replacement_role": "hero_mid_2"
+        },
+        {
+          "ref": "assets/madonna_hibrida/__04.jpg",
+          "slot": "visual_4",
+          "kind": "image",
+          "accepted_patterns": ["assets/madonna_hibrida/*.jpg"],
+          "preview_candidate": "assets/madonna_hibrida/04.jpg",
+          "replacement_role": "hero_closing"
+        },
+        {
+          "ref": "audio/__track.wav",
+          "slot": "audio_main",
+          "kind": "audio",
+          "accepted_patterns": ["audio/*.wav"],
+          "replacement_role": "score_or_ambience"
+        }
+      ]
+    }
+  ]
+}

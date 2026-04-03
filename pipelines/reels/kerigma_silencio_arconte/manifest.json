@@ -1,0 +1,50 @@
+{
+  "name": "kerigma_silencio_arconte_pack",
+  "version": "1.0",
+  "description": "Paquete completo del Kerigma del Silencio del Arconte — actos 0 a V.",
+  "author": "Khaos / Reflejos Híbridos",
+  "type": "capcut-pack",
+  "acts": [
+    {
+      "id": "acto0",
+      "name": "Acto 0 — La Cámara del Primer Latido",
+      "file": "acto0.capcut.json"
+    },
+    {
+      "id": "acto1",
+      "name": "Acto I — Primer Umbral",
+      "file": "acto1.capcut.json"
+    },
+    {
+      "id": "acto2",
+      "name": "Acto II — Susurro del Vacío",
+      "file": "acto2.capcut.json"
+    },
+    {
+      "id": "acto3",
+      "name": "Acto III — Intersticio y Ruptura",
+      "file": "acto3.capcut.json"
+    },
+    {
+      "id": "acto4",
+      "name": "Acto IV — Ascensión del Ruido",
+      "file": "acto4.capcut.json"
+    },
+    {
+      "id": "acto5",
+      "name": "Acto V — Coronación del Silencio",
+      "file": "acto5.capcut.json"
+    }
+  ],
+  "default_audio": "audio/silencio_arconte.wav",
+  "layout": {
+    "sequence": [
+      "acto0",
+      "acto1",
+      "acto2",
+      "acto3",
+      "acto4",
+      "acto5"
+    ]
+  }
+}
