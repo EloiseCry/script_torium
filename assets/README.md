@@ -36,4 +36,6 @@ Su propósito es copiar únicamente media demostrable desde el origen técnico:
 - el runner ya distingue entre `evidence_hydrated`, `placeholder_missing`
   y `declared_missing_final`
 - los placeholders pueden exponer `replacementHints` sin contaminar la cobertura real
+- los previews derivados pueden generar media sintética en `runtime/previews/media/`
+  para iteración, sin promoverla a media final
 - la deuda pendiente es hidratar media final real sin confundirla con placeholders

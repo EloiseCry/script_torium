@@ -141,7 +141,8 @@ function registerMediaRef(ref, ctx, options = {}) {
   if (
     !ref.startsWith("assets/") &&
     !ref.startsWith("audio/") &&
-    !ref.startsWith("pipelines/capcut_pack/")
+    !ref.startsWith("pipelines/capcut_pack/") &&
+    !ref.startsWith("runtime/")
   ) {
     return;
   }

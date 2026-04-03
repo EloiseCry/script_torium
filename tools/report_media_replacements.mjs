@@ -45,6 +45,8 @@ function buildReport(catalog) {
         acceptedPatterns: placeholder.accepted_patterns ?? [],
         previewCandidate,
         previewCandidateExists
+        ,
+        previewGenerator: placeholder.preview_generator ?? null
       };
     });
 
@@ -103,6 +105,7 @@ function renderMarkdown(report) {
       lines.push(`  patrones admitidos: ${placeholder.acceptedPatterns.join(", ") || "n/a"}`);
       lines.push(`  preview candidate: ${placeholder.previewCandidate ?? "n/a"}`);
       lines.push(`  preview candidate existe: ${placeholder.previewCandidateExists ? "si" : "no"}`);
+      lines.push(`  preview generator: ${placeholder.previewGenerator ?? "n/a"}`);
     }
   }
 

@@ -27,8 +27,11 @@ assert.equal(visual1.previewCandidateExists, true);
 
 const audioMain = run.context.media.replacementHints.find(entry => entry.slot === "audio_main");
 assert.ok(audioMain);
-assert.equal(audioMain.previewCandidate, null);
-assert.equal(audioMain.previewCandidateExists, false);
+assert.equal(
+  audioMain.previewCandidate,
+  "runtime/previews/media/madonna_hibrida_template.audio_main.preview.wav"
+);
+assert.equal(typeof audioMain.previewCandidateExists, "boolean");
 
 assert.ok(
   run.context.logs.some(

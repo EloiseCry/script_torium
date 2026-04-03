@@ -112,6 +112,12 @@ Lote 11 migrado:
 - salida no destructiva en `runtime/previews/`
 - la plantilla `madonna_hibrida_template.arc` ya genera un preview parcial ejecutable
 
+Lote 12 migrado:
+
+- soporte para `preview_generator` en placeholders
+- generación sintética de audio preview en `runtime/previews/media/`
+- la plantilla `madonna_hibrida_template.arc` ya genera un preview completo `5/5`
+
 Pendiente:
 
 - hidratación real de media aún ausente:

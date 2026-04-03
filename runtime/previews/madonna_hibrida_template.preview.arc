@@ -1,7 +1,7 @@
 # PREVIEW MATERIALIZADO DESDE PLACEHOLDERS
 # source: pipelines/reels/madonna_hibrida/madonna_hibrida_template.arc
-# replaced: 4
-# unresolved: 1
+# replaced: 5
+# unresolved: 0
 reel madonna_hibrida_template {
 
     meta {
@@ -16,7 +16,7 @@ reel madonna_hibrida_template {
         img2: "assets/madonna_hibrida/02.jpg"
         img3: "assets/madonna_hibrida/03.jpg"
         img4: "assets/madonna_hibrida/04.jpg"
-        audio: "audio/__track.wav"
+        audio: "runtime/previews/media/madonna_hibrida_template.audio_main.preview.wav"
     }
 
     styles {

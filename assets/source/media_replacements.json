@@ -44,6 +44,8 @@
           "slot": "audio_main",
           "kind": "audio",
           "accepted_patterns": ["audio/*.wav"],
+          "preview_candidate": "runtime/previews/media/madonna_hibrida_template.audio_main.preview.wav",
+          "preview_generator": "silence_wav_30s",
           "replacement_role": "score_or_ambience"
         }
       ]

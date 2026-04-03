@@ -63,6 +63,7 @@ export function getReplacementHint(ref, projectRoot = findProjectRoot(process.cw
     acceptedPatterns: entry.accepted_patterns ?? [],
     previewCandidate,
     previewCandidateExists,
+    previewGenerator: entry.preview_generator ?? null,
     replacementRole: entry.replacement_role ?? null,
     notes: entry.notes ?? ""
   };

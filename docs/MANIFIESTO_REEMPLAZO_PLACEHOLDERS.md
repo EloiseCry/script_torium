@@ -4,8 +4,8 @@
 
 - Sets declarados: 1
 - Placeholders declarados: 5
-- Con preview candidate: 4
-- Con preview candidate existente: 4
+- Con preview candidate: 5
+- Con preview candidate existente: 5
 
 ## madonna_hibrida_template
 
@@ -19,6 +19,7 @@
   patrones admitidos: assets/madonna_hibrida/*.jpg
   preview candidate: assets/madonna_hibrida/01.jpg
   preview candidate existe: si
+  preview generator: n/a
 - `assets/madonna_hibrida/__02.jpg`
   slot: visual_2
   tipo: image
@@ -26,6 +27,7 @@
   patrones admitidos: assets/madonna_hibrida/*.jpg
   preview candidate: assets/madonna_hibrida/02.jpg
   preview candidate existe: si
+  preview generator: n/a
 - `assets/madonna_hibrida/__03.jpg`
   slot: visual_3
   tipo: image
@@ -33,6 +35,7 @@
   patrones admitidos: assets/madonna_hibrida/*.jpg
   preview candidate: assets/madonna_hibrida/03.jpg
   preview candidate existe: si
+  preview generator: n/a
 - `assets/madonna_hibrida/__04.jpg`
   slot: visual_4
   tipo: image
@@ -40,10 +43,12 @@
   patrones admitidos: assets/madonna_hibrida/*.jpg
   preview candidate: assets/madonna_hibrida/04.jpg
   preview candidate existe: si
+  preview generator: n/a
 - `audio/__track.wav`
   slot: audio_main
   tipo: audio
   rol: score_or_ambience
   patrones admitidos: audio/*.wav
-  preview candidate: n/a
-  preview candidate existe: no
+  preview candidate: runtime/previews/media/madonna_hibrida_template.audio_main.preview.wav
+  preview candidate existe: si
+  preview generator: silence_wav_30s

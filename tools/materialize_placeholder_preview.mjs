@@ -41,6 +41,49 @@ function replaceAllQuotedRefs(source, fromRef, toRef) {
   return source.replaceAll(`"${fromRef}"`, `"${toRef}"`);
 }
 
+function createSilenceWavBuffer(durationSeconds, sampleRate = 16000, channels = 1, bitsPerSample = 16) {
+  const totalSamples = Math.max(1, Math.floor(durationSeconds * sampleRate));
+  const blockAlign = channels * (bitsPerSample / 8);
+  const byteRate = sampleRate * blockAlign;
+  const dataSize = totalSamples * blockAlign;
+  const buffer = Buffer.alloc(44 + dataSize);
+
+  buffer.write("RIFF", 0);
+  buffer.writeUInt32LE(36 + dataSize, 4);
+  buffer.write("WAVE", 8);
+  buffer.write("fmt ", 12);
+  buffer.writeUInt32LE(16, 16);
+  buffer.writeUInt16LE(1, 20);
+  buffer.writeUInt16LE(channels, 22);
+  buffer.writeUInt32LE(sampleRate, 24);
+  buffer.writeUInt32LE(byteRate, 28);
+  buffer.writeUInt16LE(blockAlign, 32);
+  buffer.writeUInt16LE(bitsPerSample, 34);
+  buffer.write("data", 36);
+  buffer.writeUInt32LE(dataSize, 40);
+
+  return buffer;
+}
+
+function materializeGeneratedPreviewAsset(placeholder) {
+  if (!placeholder.previewCandidate || !placeholder.previewGenerator) {
+    return { previewCandidateExists: placeholder.previewCandidateExists, generated: false };
+  }
+
+  const targetPath = path.join(repoRoot, placeholder.previewCandidate);
+  if (fs.existsSync(targetPath)) {
+    return { previewCandidateExists: true, generated: false };
+  }
+
+  if (placeholder.previewGenerator === "silence_wav_30s") {
+    fs.mkdirSync(path.dirname(targetPath), { recursive: true });
+    fs.writeFileSync(targetPath, createSilenceWavBuffer(30));
+    return { previewCandidateExists: true, generated: true };
+  }
+
+  return { previewCandidateExists: placeholder.previewCandidateExists, generated: false };
+}
+
 function buildDefaultOutputPaths(inputPath) {
   const parsed = path.parse(inputPath);
   const output = path.join(repoRoot, "runtime", "previews", `${parsed.name}.preview${parsed.ext}`);
@@ -79,7 +122,8 @@ for (const set of catalog.sets) {
         slot: placeholder.slot,
         kind: placeholder.kind,
         previewCandidate,
-        previewCandidateExists
+        previewCandidateExists,
+        previewGenerator: placeholder.preview_generator ?? null
       });
     }
   }
@@ -90,6 +134,12 @@ const replaced = [];
 const unresolved = [];
 
 for (const placeholder of placeholders) {
+  if (!placeholder.previewCandidateExists && placeholder.previewGenerator) {
+    const generation = materializeGeneratedPreviewAsset(placeholder);
+    placeholder.previewCandidateExists = generation.previewCandidateExists;
+    placeholder.generated = generation.generated;
+  }
+
   if (placeholder.previewCandidate && placeholder.previewCandidateExists) {
     previewSource = replaceAllQuotedRefs(previewSource, placeholder.ref, placeholder.previewCandidate);
     replaced.push(placeholder);
@@ -114,12 +164,14 @@ const report = {
   replaced: replaced.map(item => ({
     ref: item.ref,
     slot: item.slot,
-    previewCandidate: item.previewCandidate
+    previewCandidate: item.previewCandidate,
+    generated: item.generated === true
   })),
   unresolved: unresolved.map(item => ({
     ref: item.ref,
     slot: item.slot,
-    previewCandidate: item.previewCandidate ?? null
+    previewCandidate: item.previewCandidate ?? null,
+    previewGenerator: item.previewGenerator ?? null
   })),
   summary: {
     placeholdersDetected: placeholders.length,
