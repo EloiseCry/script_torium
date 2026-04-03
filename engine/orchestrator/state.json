@@ -1,0 +1,22 @@
+{
+  "universo": "reflejos_hibridos",
+  "modo": "produccion_limitada",
+  "objetivo_activo": "generar_pack_preview",
+  "template_actual": "madonna_hibrida_template",
+  "estado_media": {
+    "presente": 0,
+    "faltante": 5,
+    "placeholder": 5,
+    "replacementHints": 5
+  },
+  "ciclope": {
+    "capas_pendientes": [],
+    "bloqueante": false
+  },
+  "saturacion": 0.62,
+  "timestamp_ultimo_lote": "2026-04-02",
+  "proximo_paso_sugerido": "generar_pack_preview",
+  "timestamp_orchestrator": "2026-04-03T04:44:07.848Z",
+  "last_event": "runner_execution",
+  "timestamp_observer": "2026-04-03T04:44:07.920Z"
+}

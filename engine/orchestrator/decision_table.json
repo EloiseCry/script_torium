@@ -1,0 +1,6 @@
+{
+  "regla_bloqueo": {
+    "condicion": "ciclope.capas_pendientes > 0 AND modo === produccion",
+    "accion": "produccion_limitada"
+  }
+}

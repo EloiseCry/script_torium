@@ -7,6 +7,7 @@ import { exportToCapCut } from "../exporters/capcut_exporter.js";
 import { processVoices } from "../preexport/voice_pipeline.js";
 import { findProjectRoot, getMediaCatalogEntry } from "../media/catalog.js";
 import { getReplacementHint } from "../media/replacements.js";
+import { observe } from "../orchestrator/observer.js";
 
 function resolveArcReference(relativeFile, ritual, options = {}) {
   const projectRoot =
@@ -594,6 +595,17 @@ if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
     mediaUncatalogued: result.context.media.uncatalogued.length,
     mediaReplacementHints: result.context.media.replacementHints.length
   };
+
+  // 🔥 Observer registra resultados reales
+  observe({
+    type: "runner_execution",
+    payload: {
+      mediaPresent: result.context.media.present.length,
+      mediaMissing: result.context.media.missing.length,
+      mediaPlaceholder: result.context.media.placeholder.length,
+      mediaReplacementHints: result.context.media.replacementHints.length
+    }
+  });
 
   if (cli.voiceDir) {
     const voicePack = processVoices(result.context.timeline, cli.voiceDir);
