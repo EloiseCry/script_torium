@@ -8,6 +8,7 @@ Este directorio concentra los documentos de gobierno técnico del proceso de con
 - `AUDITORIA_PUNTO_CERO.md`
 - `COMPARATIVA_PUNTO_CERO_VS_SCRIPTORIUM_0_1.md`
 - `MATRIZ_FUSION_SCRIPTORIUM.md`
+- `codex_SCRIPTORIUM.txt`
 
 ## Regla
 

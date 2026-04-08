@@ -51,6 +51,5 @@ Fuentes contrastadas:
 
 ## Nota sobre archivos de contexto
 
-No se encontro `codex_SCRIPTORIUM.txt` dentro del repo en esta corrida. Si esta en otro path, conviene anexarlo a `docs/auditorias/` para trazabilidad.
-
+Se encontro `codex_SCRIPTORIUM.txt` en `docs/auditorias/codex_SCRIPTORIUM.txt` y fue considerado como memoria operativa del proceso.
 
