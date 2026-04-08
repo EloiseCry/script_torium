@@ -1,87 +1,129 @@
-/**
- * ## “El Orchestrator no busca permiso.
- * Solo alinea estado con acción.”
- */
-import fs from "fs";
-import path from "path";
-import { execSync } from "child_process";
+import fs from "node:fs";
+import path from "node:path";
+import { execFileSync } from "node:child_process";
+import { fileURLToPath } from "node:url";
+import {
+  PROJECT_ROOT,
+  DECISION_PATH,
+  loadJson,
+  loadState,
+  saveState
+} from "./state_store.js";
 
-const STATE_PATH = "./engine/orchestrator/state.json";
-const DECISION_PATH = "./engine/orchestrator/decision_table.json";
-
-function loadJSON(p) {
-  return JSON.parse(fs.readFileSync(p, "utf-8"));
+function asArcFilename(templateActual) {
+  const raw = String(templateActual ?? "").trim();
+  if (!raw) return null;
+  return raw.endsWith(".arc") ? raw : `${raw}.arc`;
 }
 
-function saveJSON(p, data) {
-  fs.writeFileSync(p, JSON.stringify(data, null, 2));
+function candidateTemplatePaths(state) {
+  const out = [];
+
+  if (typeof state.template_path === "string" && state.template_path.trim()) {
+    out.push(state.template_path.trim());
+  }
+
+  const arcFilename = asArcFilename(state.template_actual);
+  const universo = String(state.universo ?? "").trim();
+
+  if (universo && arcFilename) {
+    out.push(path.join("pipelines", "reels", universo, arcFilename));
+  }
+
+  if (arcFilename) {
+    const familyFromTemplate = arcFilename.replace(/\.arc$/i, "").replace(/_template$/i, "");
+    if (familyFromTemplate) {
+      out.push(path.join("pipelines", "reels", familyFromTemplate, arcFilename));
+    }
+  }
+
+  return [...new Set(out)];
 }
 
-function evaluateMode(state, rules) {
-  const bloqueo = rules.regla_bloqueo;
+export function resolveTemplatePath(state, projectRoot = PROJECT_ROOT) {
+  const candidates = candidateTemplatePaths(state);
 
-  if (
-    state.ciclope.capas_pendientes.length > 0 &&
-    state.modo === "produccion"
-  ) {
+  for (const relativeCandidate of candidates) {
+    const absoluteCandidate = path.resolve(projectRoot, relativeCandidate);
+    if (fs.existsSync(absoluteCandidate)) {
+      return relativeCandidate.replace(/\\/g, "/");
+    }
+  }
+
+  throw new Error(`No se pudo resolver template desde estado. Candidatos: ${candidates.join(", ")}`);
+}
+
+export function evaluateMode(state, rules) {
+  const hasPendingLayers = (state?.ciclope?.capas_pendientes ?? []).length > 0;
+  if (hasPendingLayers && state?.modo === "produccion") {
     return "produccion_limitada";
   }
 
   return state.modo;
 }
 
-function decideNextStep(state) {
-  if (state.estado_media.faltante > 0) {
+export function decideNextStep(state) {
+  if ((state?.estado_media?.faltante ?? 0) > 0) {
     return "resolver_media";
   }
 
-  if (state.ciclope.capas_pendientes.length > 0) {
-    return "generar_pack_preview"; // 👈 CAMBIO CLAVE
+  if ((state?.ciclope?.capas_pendientes ?? []).length > 0) {
+    return "generar_pack_preview";
   }
 
-  if (state.saturacion > 0.7) {
+  if ((state?.saturacion ?? 0) > 0.7) {
     return "expandir_templates";
   }
 
   return "generar_pack_preview";
 }
 
-// 🔥 EJECUCIÓN AUTOMÁTICA SEGÚN DECISIÓN
+function runRunner(templatePath) {
+  const runnerPath = path.join(PROJECT_ROOT, "engine", "runner", "index.js");
+  execFileSync(process.execPath, [runnerPath, templatePath], {
+    stdio: "inherit",
+    cwd: PROJECT_ROOT
+  });
+}
+
+function runHydrateMedia() {
+  const npmCmd = process.platform === "win32" ? "npm.cmd" : "npm";
+  execFileSync(npmCmd, ["run", "hydrate:media"], {
+    stdio: "inherit",
+    cwd: PROJECT_ROOT
+  });
+}
 
 function executeAction(nextStep, state) {
   try {
     if (nextStep === "generar_pack_preview") {
-      console.log("⚙️ Ejecutando ARC runner...");
-
-      execSync(
-        `node engine/runner/index.js pipelines/reels/madonna_hibrida/madonna_hibrida_template.arc`,
-        { stdio: "inherit" }
-      );
+      const templatePath = resolveTemplatePath(state, PROJECT_ROOT);
+      runRunner(templatePath);
+      return;
     }
 
     if (nextStep === "continuar_ciclope") {
-      console.log("🧬 Ciclope pendiente → no se ejecuta runner");
+      console.log("Ciclope pendiente; se omite runner");
+      return;
     }
 
     if (nextStep === "resolver_media") {
-      console.log("🧩 Ejecutar hidratación de media");
-      execSync(`npm run hydrate:media`, { stdio: "inherit" });
+      runHydrateMedia();
+      return;
     }
 
     if (nextStep === "expandir_templates") {
-      console.log("🚀 Escalando templates...");
-      // futuro hook
+      console.log("expandir_templates: pendiente de implementar");
     }
-
-  } catch (err) {
-    console.error("🔥 ERROR EJECUTANDO ACCIÓN");
-    console.error(err);
+  } catch (error) {
+    console.error("Error ejecutando accion del orchestrator");
+    console.error(error);
   }
 }
 
 export function runOrchestrator() {
-  const state = loadJSON(STATE_PATH);
-  const rules = loadJSON(DECISION_PATH);
+  const state = loadState();
+  const rules = loadJson(DECISION_PATH);
 
   const newMode = evaluateMode(state, rules);
   const nextStep = decideNextStep(state);
@@ -93,10 +135,10 @@ export function runOrchestrator() {
     timestamp_orchestrator: new Date().toISOString()
   };
 
-  saveJSON(STATE_PATH, updatedState);
+  saveState(updatedState);
 
-  console.log("🧠 ORCHESTRATOR DECISION");
-  console.log("----------------------");
+  console.log("ORCHESTRATOR DECISION");
+  console.log("---------------------");
   console.log("Modo:", newMode);
   console.log("Siguiente paso:", nextStep);
 
@@ -105,10 +147,13 @@ export function runOrchestrator() {
   return updatedState;
 }
 
-// 🔥 AQUÍ — fuera de la función
-try {
-  runOrchestrator();
-} catch (err) {
-  console.error("🔥 ORCHESTRATOR ERROR");
-  console.error(err);
+const __filename = fileURLToPath(import.meta.url);
+if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+  try {
+    runOrchestrator();
+  } catch (error) {
+    console.error("ORCHESTRATOR ERROR");
+    console.error(error);
+    process.exitCode = 1;
+  }
 }

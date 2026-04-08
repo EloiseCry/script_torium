@@ -1,28 +1,21 @@
-/**
- * ## Regla inviolable: observer nunca llama orchestrator
- */
-
-import fs from "fs";
-
-const STATE_PATH = "./engine/orchestrator/state.json";
+import { loadState, saveState } from "./state_store.js";
 
 export function observe(event) {
-  const state = JSON.parse(fs.readFileSync(STATE_PATH, "utf-8"));
+  const state = loadState();
+  const updatedState = { ...state };
 
-  let updatedState = { ...state };
-
-  // Interpretación del evento
-  if (event.type === "runner_execution") {
+  if (event?.type === "runner_execution") {
     updatedState.estado_media = {
-      presente: event.payload.mediaPresent,
-      faltante: event.payload.mediaMissing,
-      placeholder: event.payload.mediaPlaceholder,
-      replacementHints: event.payload.mediaReplacementHints
+      presente: event?.payload?.mediaPresent ?? state?.estado_media?.presente ?? 0,
+      faltante: event?.payload?.mediaMissing ?? state?.estado_media?.faltante ?? 0,
+      placeholder: event?.payload?.mediaPlaceholder ?? state?.estado_media?.placeholder ?? 0,
+      replacementHints: event?.payload?.mediaReplacementHints ?? state?.estado_media?.replacementHints ?? 0
     };
   }
 
-  updatedState.last_event = event.type;
+  updatedState.last_event = event?.type ?? "unknown";
   updatedState.timestamp_observer = new Date().toISOString();
 
-  fs.writeFileSync(STATE_PATH, JSON.stringify(updatedState, null, 2));
+  saveState(updatedState);
+  return updatedState;
 }

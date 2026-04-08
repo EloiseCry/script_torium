@@ -1,0 +1,2121 @@
+Voy a auditar C:\Users\alien\SCRIPTORIUM🜇 0.1 empezando por el inventario completo de la carpeta y los archivos 1.txt a 6.txt, para reconstruir el origen y la función de lo que hay dentro.
+
+Terminal en segundo plano completado con pwd
+
+
+Explorado(s) 2 listas
+Terminal en segundo plano completado con for f in '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1'/{1,2,3,4,5,6}.txt; do echo '===== '"$f"' ====='; sed -n '1,220p' "$f"; echo; done
+
+
+Ya tengo el primer rastro: la carpeta mezcla núcleo del proyecto, material generado, evidencia de conversaciones que explican su origen y varios artefactos operativos. Ahora voy a separar qué es código, qué es documentación fundacional, qué es output generado y qué es residuo/infraestructura.
+
+Terminal en segundo plano completado con git -C '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1' status --short --branch
+
+
+Terminal en segundo plano completado con git -C '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1' remote -v && printf '\n---\n' && git -C '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1' log --oneline --decorate -n 12
+
+
+Explorado(s) 3 archivos
+Terminal en segundo plano completado con du -sh '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1'/* '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1'/.[!.]* 2>/dev/null | sort -h
+
+
+Explorado(s) 2 archivos,1 lista
+Estoy cerrando la parte forense: historial git, peso real por zonas, y consistencia entre la documentación y lo que existe de verdad en disco. Eso va a permitir distinguir material fundacional, prototipos vivos y restos de iteraciones anteriores.
+
+Explorado(s) 5 archivos,1 búsqueda
+Terminal en segundo plano completado con printf '===== cache keys =====\n'; node -e "const fs=require('fs'); for (const f of ['scriptorium_cache.json','scriptorium_sync_cache.json','contenido_generado/contenido_generado.json','contenido_generado/generacion_20260225_181527.json','05_EXPERIMENTOS/pipeline_output_prueba.json','05_EXPERIMENTOS/thread_estetica_quemadura.json','02_GLOSARIOS/glosario_maestro.json']) { const p='/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/'+f; if (!fs.existsSync(p)) continue; try { const data=JSON.parse(fs.readFileSync(p,'utf8')); const summary=Array.isArray(data)?{type:'array',length:data.length,first:(data[0]&&typeof data[0]==='object')?Object.keys(data[0]).slice(0,12):typeof data[0]}:{type:typeof data,keys:Object.keys(data).slice(0,20)}; console.log('FILE',f); console.log(JSON.stringify(summary,null,2)); } catch(e) { console.log('FILE',f); console.log('INVALID_JSON',e.message); } }"
+
+
+Terminal en segundo plano completado con printf '===== .env keys =====\n'; sed -n '1,120p' '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/.env' | sed -E 's/=.*$/=***REDACTED***/'; printf '\n===== .env copy keys =====\n'; if [ -f '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/.env copy' ]; then sed -n '1,120p' '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/.env copy' | sed -E 's/=.*$/=***REDACTED***/'; fi; printf '\n===== tracked files in HEAD =====\n'; git -C '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1' ls-tree -r --name-only HEAD
+
+
+La imagen ya es bastante clara: el repositorio git nació como corpus documental y el código Python llegó después, sin integrarse al historial. Voy a validar eso contra los commits y revisar los artefactos clave para distinguir el “sistema prometido” del “sistema realmente ejecutable”.
+
+Terminal en segundo plano completado con python - <<'PY' import json, os base='/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1' files=['scriptorium_cache.json','scriptorium_sync_cache.json','contenido_generado/contenido_generado.json','contenido_generado/generacion_20260225_181527.json','05_EXPERIMENTOS/pipeline_output_prueba.json','05_EXPERIMENTOS/thread_estetica_quemadura.json','02_GLOSARIOS/glosario_maestro.json'] for rel in files: p=os.path.join(base, rel) print('FILE', rel) if not os.path.exists(p): print(' MISSING') continue try: with open(p,'r',encoding='utf-8') as f: data=json.load(f) if isinstance(data, dict): print(' TYPE dict') print(' KEYS', list(data.keys())[:20]) if rel.endswith('glosario_maestro.json'): print(' TERMS', len(data)) print(' SAMPLE_TERMS', list(data.keys())[:10]) if rel.endswith('contenido_generado.json') or 'generacion_' in rel: print(' ITEMS', len(data)) print(' SAMPLE', list(data.keys())[:5]) elif isinstance(data, list): print(' TYPE list') print(' LEN', len(data)) if data: first=data[0] print(' FIRST_TYPE', type(first).__name__) if isinstance(first, dict): print(' FIRST_KEYS', list(first.keys())[:20]) else: print(' TYPE', type(data).__name__) except Exception as e: print(' ERROR', e) PY
+
+
+Terminal en segundo plano completado con printf '===== sample generated markdown =====\n'; for f in \ 'contenido_generado/prompt_ritual.md' \ 'contenido_generado/cibernetica_existencial.md' \ 'contenido_generado/conciencia_hibrida.md'; do echo "----- $f -----"; sed -n '1,120p' "/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/$f"; echo; done
+
+
+Terminal en segundo plano completado con printf '===== git show --stat =====\n'; git -C '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1' log --stat --reverse --decorate --format='%h %ad %s' --date=short; printf '\n===== git diff --stat =====\n'; git -C '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1' diff --stat
+
+
+Terminal en segundo plano completado con printf '===== tracked docs headings =====\n'; for f in \ '00_MANIFIESTO/manifiesto_arcontico.md' \ '01_ONTOLOGIA/ontologia_prompt_ritual.md' \ '02_GLOSARIOS/ConcienciaHibrida/glosario_v2.md' \ '02_GLOSARIOS/Programacion/glosario_programacion_v1.md' \ '03_PROMPTS_BASE/prompt_01_generacion_contenido.md' \ '03_PROMPTS_BASE/prompt_01_generacion_contenido_v2_HIBRIDO.md' \ '04_MOVIMIENTOS/movimiento_4_validacion.md' \ '04_MOVIMIENTOS/movimiento_6_publicacion_real.md' \ '05_EXPERIMENTOS/experimento_01_FINAL_PUBLISH.md' \ '05_EXPERIMENTOS/experimento_01_prompt_ritual.md' \ '05_EXPERIMENTOS/experimento_02_cibernetica_existencial.md'; do echo "----- $f -----"; rg -n '^#' "/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/$f" || sed -n '1,60p' "/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/$f"; echo; done
+
+
+Explorado(s) 1 búsqueda
+Ya apareció un problema serio de seguridad y otro de madurez técnica: hay un token de Notion hardcodeado en test_connection.py, y la mayor parte del código ejecutable no forma parte del historial git. Voy a comprobar qué sí corre hoy y cómo se relaciona con el prompt base y los outputs generados.
+
+Terminal en segundo plano completado con python3 --version || '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/.venv/Scripts/python.exe' --version || '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/venv/Scripts/python.exe' --version
+
+
+Explorado(s) 2 archivos
+Terminal en segundo plano completado con cd '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1' && if command -v python3 >/dev/null 2>&1; then python3 scriptorium.py; else '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/.venv/Scripts/python.exe' scriptorium.py; fi
+
+
+Terminal en segundo plano completado con printf '===== sample diffs HEAD vs working =====\n'; for f in '00_MANIFIESTO/manifiesto_arcontico.md' '03_PROMPTS_BASE/prompt_01_generacion_contenido.md' '04_MOVIMIENTOS/movimiento_6_publicacion_real.md'; do echo "----- $f -----"; git -C '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1' diff -- "$f" | sed -n '1,160p'; echo; done
+
+
+Terminal en segundo plano completado con cd '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1' && if [ -x '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/.venv/Scripts/python.exe' ]; then '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/.venv/Scripts/python.exe' glosario_generator.py --termino 'Prompt Ritual'; else python3 glosario_generator.py --termino 'Prompt Ritual'; fi
+
+
+Ya probé el núcleo. scriptorium.py sí arranca, pero en modo simulación y con métricas mal modeladas; glosario_generator.py no arranca con el .venv incluido porque ese entorno virtual apunta a C:\Python314\python.exe, que ya no existe. Voy a confirmar el estado del generador y el shape real del caché.
+
+Explorado(s) 4 archivos,1 búsqueda
+Terminal en segundo plano completado con cd '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1' && python3 glosario_generator.py --termino 'Prompt Ritual'
+
+
+Explorado(s) 3 archivos
+Terminal en segundo plano completado con if [ -f '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/.gitignore' ]; then echo present; else echo missing; fi
+
+
+Queda una última capa: inconsistencias entre la documentación y la realidad del repositorio. Eso suele ser donde más tiempo se pierde después. Voy a sacar referencias exactas para dejar el dictamen utilizable.
+
+Explorado(s) 4 archivos,1 lista
+Terminal en segundo plano completado con printf '===== glosario_maestro summary =====\n'; python3 - <<'PY' import json p='/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/02_GLOSARIOS/glosario_maestro.json' with open(p,encoding='utf-8') as f: data=json.load(f) print('terms', len(data)) for i,(k,v) in enumerate(data.items()): if i>=12: break print(k, '->', sorted(v.keys())) PY
+
+
+Explorado(s) 1 lista
+Voy a dejar la auditoría dentro del proyecto para que quede como referencia de trabajo. Será un dictamen técnico: inventario, origen reconstruido desde 1.txt a 6.txt, estado real de ejecución, riesgos y siguientes pasos.
+
+diff --git a//mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/AUDITORIA_SCRIPTORIUM_0_1.md b//mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/AUDITORIA_SCRIPTORIUM_0_1.md
+new file mode 100644
+--- /dev/null
++++ b//mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/AUDITORIA_SCRIPTORIUM_0_1.md
+@@ -0,0 +1,372 @@
++# Auditoría Técnica de `SCRIPTORIUM🜇 0.1`
++
++Fecha de auditoría: 2026-04-02
++
++## 1. Dictamen ejecutivo
++
++`SCRIPTORIUM🜇 0.1` no es un producto único y cerrado; es una mezcla de:
++
++- corpus editorial fundacional,
++- prototipo Python para sincronizar/generar contenido,
++- outputs ya generados,
++- bitácoras de conversación que explican su origen,
++- y residuos de infraestructura local.
++
++El repositorio git contiene sobre todo la capa documental. La capa de automatización real fue añadida después y sigue sin integrarse al historial.
++
++Estado actual:
++
++- La base conceptual está bien definida.
++- Hay evidencia de ejecución real y publicación real.
++- El código ejecutable existe, pero está incompleto, inconsistente y parcialmente roto.
++- Hay problemas serios de higiene: secretos expuestos, ausencia de `.gitignore`, entornos virtuales rotos y archivos temporales/versionables mezclados con el proyecto.
++
++## 2. Inventario funcional
++
++### 2.1 Núcleo documental versionado
++
++Contenido tracked por git:
++
++- `00_MANIFIESTO/`
++- `01_ONTOLOGIA/`
++- `02_GLOSARIOS/ConcienciaHibrida/`
++- `02_GLOSARIOS/Programacion/`
++- `03_PROMPTS_BASE/prompt_01_generacion_contenido.md`
++- `04_MOVIMIENTOS/`
++- `05_EXPERIMENTOS/experimento_01_*`
++
++Conclusión:
++
++- El repo nació como sistema editorial/documental.
++- Los 4 commits existentes registran fundación, experimento 01 y primera publicación.
++
++### 2.2 Capa de automatización no versionada
++
++Archivos principales:
++
++- `scriptorium.py`
++- `glosario_generator.py`
++- `publicar_hilo.py`
++- `test_connection.py`
++- `requirements.txt`
++- `scriptorium_cache.json`
++- `scriptorium_sync_cache.json`
++- `02_GLOSARIOS/glosario_maestro.json`
++- `contenido_generado/`
++
++Conclusión:
++
++- Esta capa representa una evolución posterior hacia automatización con Notion, LLM y publicación.
++- Ninguno de estos archivos forma parte del historial git actual.
++
++### 2.3 Residuos y artefactos locales
++
++Hallazgos:
++
++- `venv/` y `.venv/` duplicados.
++- `.tmp.driveupload/` con 41 archivos temporales.
++- `__pycache__/`
++- `.env` y `.env copy`
++- `1.txt` a `6.txt` como bitácoras/transcripciones extensas.
++
++Conclusión:
++
++- La carpeta mezcla producto, memoria operativa y basura local.
++
++## 3. Origen reconstruido desde `1.txt` a `6.txt`
++
++### `1.txt`
++
++Origen estratégico del proyecto:
++
++- revisión del repositorio `system-prompts-and-models-of-ai-tools`,
++- adopción de una lógica de exploración estructurada,
++- separación mental entre componentes reutilizables, experimentales y de escalamiento.
++
++Huella visible en `SCRIPTORIUM🜇 0.1`:
++
++- estructura de carpetas por capas,
++- idea de catálogo interno de prompts,
++- lenguaje de “stack híbrido” y reutilización modular.
++
++### `2.txt`
++
++Introduce el universo `ARC DSL` y los movimientos `MOVE 4` y `MOVE 6`:
++
++- `emit_image`,
++- voz IA,
++- subtítulos,
++- exportación a CapCut.
++
++Huella visible:
++
++- lenguaje de “movimientos”,
++- noción de pipeline declarativo,
++- puente entre contenido, timeline y publicación.
++
++Pero:
++
++- ese motor ARC no vive en esta carpeta;
++- aquí aparece como influencia conceptual, no como implementación directa.
++
++### `3.txt`
++
++Profundiza en validación operativa del pipeline ARC:
++
++- smoke tests,
++- validación por contratos,
++- estrés semántico,
++- observabilidad mínima.
++
++Huella visible:
++
++- `04_MOVIMIENTOS/movimiento_4_validacion.md`,
++- tono de “validación ritual-operativa”,
++- disciplina de fases/checkpoints.
++
++### `4.txt`
++
++Es el mapa formal por fases:
++
++1. Exploración estructurada
++2. Integración de glosarios
++3. Narrativa y arte
++4. Monetización y app
++
++Huella visible:
++
++- la carpeta actual materializa sobre todo las fases 2 y 3,
++- con algo de fase 1 documentada y casi nada implementado de la 4.
++
++### `5.txt`
++
++Marca el giro operativo:
++
++- entrada de Cascade/Windsurf,
++- uso de Perplexity Search,
++- trabajo paralelo,
++- adopción del metaprompt ARCONTE,
++- idea de dosificar el Scriptorium para múltiples IA.
++
++Huella visible:
++
++- versión `v2_HIBRIDO` del prompt,
++- tono más sistémico y multiagente,
++- documentos extensos como memoria de coordinación.
++
++### `6.txt`
++
++Es la prueba más clara de ejecución real del generador:
++
++- ejemplo completo de salida para “Prompt Ritual”,
++- llamada a `glosario_generator.py`,
++- producción de hilo y artículo.
++
++Huella visible:
++
++- `glosario_generator.py`,
++- `contenido_generado/`,
++- `05_EXPERIMENTOS/experimento_02_cibernetica_existencial.md`.
++
++## 4. Estado real del repositorio
++
++### 4.1 Git
++
++- Rama: `master`
++- Commits: 4
++- El historial sólo registra la superficie documental.
++- Los archivos tracked aparecen modificados, pero la muestra revisada indica cambios de saltos de línea más que cambios semánticos.
++
++Conclusión:
++
++- El repositorio versiona la narrativa del sistema, no su estado técnico real.
++
++### 4.2 Peso y composición
++
++Tamaño total aproximado: 53 MB
++
++Distribución relevante:
++
++- `venv/`: 28 MB
++- `.venv/`: 24 MB
++- resto funcional/documental: < 1 MB por bloque
++
++Conclusión:
++
++- casi todo el peso proviene de dos entornos virtuales duplicados y rotos.
++
++### 4.3 Ejecución verificada
++
++Comprobado durante esta auditoría:
++
++- `python3 scriptorium.py` sí ejecuta.
++- Se ejecuta en modo simulación cuando `NOTION_API_TOKEN` no está definido.
++- `glosario_generator.py` no corre con `python3` porque falta la dependencia `anthropic`.
++- `.venv/Scripts/python.exe` y `venv/Scripts/python.exe` están rotos: ambos apuntan a `C:\Python314\python.exe`, inexistente en este entorno.
++
++## 5. Hallazgos críticos
++
++### 5.1 Secreto expuesto en código
++
++`test_connection.py` contiene un token de Notion hardcodeado.
++
++Impacto:
++
++- compromiso potencial de credenciales,
++- contaminación del repositorio si se llega a commitear,
++- mala práctica base de seguridad.
++
++Acción recomendada:
++
++- rotar el token,
++- eliminarlo del archivo,
++- mover toda credencial a `.env`,
++- introducir `.gitignore`.
++
++### 5.2 No existe `.gitignore`
++
++Impacto:
++
++- `.env`, caches, outputs, `venv/`, `.venv/`, temporales y transcripciones pueden terminar versionados por accidente.
++
++### 5.3 El generador no tiene dependencias completas declaradas
++
++`glosario_generator.py` importa `anthropic`, pero `requirements.txt` no lo incluye.
++
++Impacto:
++
++- el entorno documentado no reproduce el sistema real.
++
++### 5.4 Los entornos virtuales están rotos y duplicados
++
++Ambos `pyvenv.cfg` apuntan a Python 3.14 en `C:\Python314\python.exe`.
++
++Impacto:
++
++- los venv no son portables,
++- el proyecto da una falsa sensación de ejecutabilidad.
++
++### 5.5 `publicar_hilo.py` no es compatible con los outputs actuales
++
++Inconsistencias detectadas:
++
++- busca archivos `contenido_generado_*.json`, pero en la carpeta existe `contenido_generado.json` y `generacion_20260225_181527.json`,
++- espera `hilo_twitter`, mientras el generador produce `thread_twitter`,
++- contiene typo `terminio`,
++- asume una estructura de hilo que no coincide claramente con el texto parseado.
++
++Impacto:
++
++- el publicador no está listo para operar.
++
++### 5.6 `scriptorium.py` tiene un modelo de datos inconsistente
++
++Problemas:
++
++- `metrics` guarda números agregados, pero `sync_to_notion()` los trata como si fueran métricas por término,
++- `generated_content` guarda contadores agregados, pero luego se usa `len(...)` como si midiera piezas generadas reales.
++
++Impacto:
++
++- las estadísticas mostradas son engañosas,
++- el push a Notion no representa entidades válidas.
++
++### 5.7 Fuga de razonamiento y basura conversacional en outputs
++
++Problemas:
++
++- `prompt_01_generacion_contenido_v2_HIBRIDO.md` pide explícitamente `<thinking_process>`,
++- `contenido_generado/prompt_ritual.md` conserva esa sección,
++- `05_EXPERIMENTOS/experimento_01_FINAL_PUBLISH.md` arranca con texto conversacional en inglés antes del contenido útil.
++
++Impacto:
++
++- riesgo editorial,
++- contaminación del contenido final,
++- exposición de razonamiento interno en piezas publicables.
++
++## 6. Qué sí está sólido
++
++- El manifiesto, ontología y glosarios muestran una base conceptual coherente.
++- Existe un glosario maestro en JSON con 23 términos y estructura útil para automatización.
++- Hay evidencia clara de generación real de múltiples piezas en `contenido_generado/`.
++- Existe una publicación documentada en Medium.
++- El prompt híbrido v2 muestra una evolución clara desde el prompt único del experimento 01 hacia un sistema reutilizable.
++
++## 7. Qué es cada zona, en términos prácticos
++
++### Zona canónica
++
++- `00_MANIFIESTO/`
++- `01_ONTOLOGIA/`
++- `02_GLOSARIOS/`
++- `03_PROMPTS_BASE/`
++- `04_MOVIMIENTOS/`
++- `05_EXPERIMENTOS/`
++
++Uso:
++
++- memoria editorial y conceptual del sistema.
++
++### Zona operativa experimental
++
++- `scriptorium.py`
++- `glosario_generator.py`
++- `publicar_hilo.py`
++- `scriptorium_*cache.json`
++- `contenido_generado/`
++
++Uso:
++
++- prototipo funcional de automatización.
++
++### Zona de evidencia / bitácora
++
++- `1.txt` a `6.txt`
++
++Uso:
++
++- reconstrucción histórica,
++- rastreo de decisiones,
++- origen de cambios de arquitectura.
++
++### Zona descartable o a aislar
++
++- `venv/`
++- `.venv/`
++- `.tmp.driveupload/`
++- `__pycache__/`
++- `.env copy`
++
++## 8. Recomendación de saneamiento
++
++Orden sugerido:
++
++1. Crear `.gitignore`.
++2. Rotar y retirar el token expuesto.
++3. Eliminar uno de los dos entornos virtuales y recrear el restante.
++4. Separar `docs/`, `runtime/outputs/` y `logs/bitacora/`.
++5. Arreglar `requirements.txt`.
++6. Corregir compatibilidad entre `glosario_generator.py` y `publicar_hilo.py`.
++7. Limpiar el prompt v2 para que nunca exporte `<thinking_process>`.
++8. Decidir si el repo seguirá siendo:
++   - editorial/documental, o
++   - producto ejecutable.
++
++## 9. Conclusión
++
++`SCRIPTORIUM🜇 0.1` sí tiene valor real, pero ese valor no está en su estado técnico actual sino en la combinación de:
++
++- una ontología ya bastante madura,
++- un glosario utilizable,
++- una primera automatización con salidas visibles,
++- y una memoria histórica muy rica sobre cómo llegó hasta aquí.
++
++No está listo para producción sostenida.
++Sí está listo para una fase de saneamiento y consolidación.
++
++La lectura correcta de esta carpeta es:
++
++- no es basura caótica,
++- tampoco es una aplicación terminada,
++- es un prototipo editorial-operativo con evidencia de uso real, todavía sin disciplina de producto.
+
+
+Dejé la auditoría completa en [AUDITORIA_SCRIPTORIUM_0_1.md](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/AUDITORIA_SCRIPTORIUM_0_1.md).
+
+**Dictamen**
+`SCRIPTORIUM🜇 0.1` es un prototipo editorial-operativo, no una app cerrada. La parte sólida está en el corpus conceptual y la evidencia de uso real; la parte débil está en la disciplina técnica. El git sólo versiona la capa documental, mientras que el código ejecutable y los outputs viven fuera del historial. Además, encontré un secreto expuesto en [test_connection.py:11](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/test_connection.py#L11), no hay `.gitignore`, hay dos entornos virtuales rotos que apuntan a `C:\Python314\python.exe` en [.venv/pyvenv.cfg](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/.venv/pyvenv.cfg) y [venv/pyvenv.cfg](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/venv/pyvenv.cfg), y el generador/publisher no son compatibles entre sí: [glosario_generator.py](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/glosario_generator.py) produce `thread_twitter`, pero [publicar_hilo.py](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/publicar_hilo.py#L104) espera `hilo_twitter` y además busca archivos que no coinciden con los nombres reales en `contenido_generado/`.
+
+**Origen reconstruido**
+`1.txt` y `4.txt` son la columna vertebral estratégica: de ahí salen el mapa por fases, la exploración de repositorios de prompts y la estructura conceptual del Scriptorium. `2.txt` y `3.txt` vienen del universo ARC DSL/CapCut y explican el lenguaje de “movimientos” y validación, pero ese motor no está implementado en esta carpeta; aquí sólo dejó su influencia documental en [04_MOVIMIENTOS](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/04_MOVIMIENTOS). `5.txt` marca el giro hacia Cascade, Perplexity y orquestación multiagente; eso se nota en el prompt v2 híbrido en [prompt_01_generacion_contenido_v2_HIBRIDO.md](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/03_PROMPTS_BASE/prompt_01_generacion_contenido_v2_HIBRIDO.md). `6.txt` es la prueba más clara de ejecución real del generador y se refleja en [glosario_generator.py](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/glosario_generator.py), [glosario_maestro.json](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/02_GLOSARIOS/glosario_maestro.json) y [contenido_generado](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/contenido_generado).
+
+**Verificación**
+Probé [scriptorium.py](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/scriptorium.py): arranca, pero sólo en simulación y con `TODO` reales en la integración Notion. Probé [glosario_generator.py](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/glosario_generator.py): falla porque falta `anthropic` en el entorno y ni siquiera está declarado en [requirements.txt](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/requirements.txt). También confirmé fuga de razonamiento: el prompt v2 pide `<thinking_process>` en [prompt_01_generacion_contenido_v2_HIBRIDO.md:35](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/03_PROMPTS_BASE/prompt_01_generacion_contenido_v2_HIBRIDO.md#L35), y eso aparece luego en [contenido_generado/prompt_ritual.md:8](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/contenido_generado/prompt_ritual.md#L8). Al ejecutar `scriptorium.py` se actualizó el timestamp de [scriptorium_cache.json](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1/scriptorium_cache.json).
+
+El siguiente paso correcto es sanear el repositorio antes de construir encima: `.gitignore`, rotación del token, reconstrucción de un solo `venv`, corrección de `requirements.txt`, y alinear `glosario_generator.py` con `publicar_hilo.py`. Si quieres, sigo con esa fase y la dejo hecha.
+
+Voy a auditar C:\Users\alien\scriptorium-arcontico punto cero con el mismo criterio forense y luego haré una comparación estructural y operativa contra SCRIPTORIUM🜇 0.1.
+
+Explorado(s) 1 búsqueda,1 lista
+Terminal en segundo plano completado con git -C '/mnt/c/Users/alien/scriptorium-arcontico punto cero' status --short --branch
+
+
+Terminal en segundo plano completado con git -C '/mnt/c/Users/alien/scriptorium-arcontico punto cero' remote -v && printf '\n---\n' && git -C '/mnt/c/Users/alien/scriptorium-arcontico punto cero' log --oneline --decorate --graph -n 20
+
+
+Terminal en segundo plano completado con du -sh '/mnt/c/Users/alien/scriptorium-arcontico punto cero'/* '/mnt/c/Users/alien/scriptorium-arcontico punto cero'/.[!.]* 2>/dev/null | sort -h
+
+
+Explorado(s) 1 lista
+Ya salió el contraste grueso: scriptorium-arcontico punto cero es mucho más motor/timeline/pipeline que SCRIPTORIUM🜇 0.1, que era más editorial/generador de contenido. Ahora voy a leer los documentos y el código clave para fijar el origen, madurez y solapamientos entre ambos.
+
+Explorado(s) 9 archivos
+Ya confirmé el linaje: esta carpeta es la rama técnica anterior del motor ARC, y contiene el núcleo de parser/runner/export que en SCRIPTORIUM🜇 0.1 casi no existe. Ahora voy a verificar ejecutabilidad, calidad del código y diferencias objetivas entre ambas carpetas.
+
+Explorado(s) 10 archivos
+Terminal en segundo plano completado con node --version && cd '/mnt/c/Users/alien/scriptorium-arcontico punto cero' && node test.js && printf '\n---\n' && node test_parser.js
+
+
+Voy a cerrar la comparativa con datos objetivos: presencia o ausencia de .gitignore, ejecutabilidad de Node en Windows, y diferencias de estructura entre ambas raíces para no dejarla en impresiones.
+
+Terminal en segundo plano completado con for d in '/mnt/c/Users/alien/scriptorium-arcontico punto cero' '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1'; do printf '===== %s =====\n' "$d"; if [ -f "$d/.gitignore" ]; then echo present; else echo missing; fi; done
+
+
+Terminal en segundo plano completado con python3 - <<'PY' from pathlib import Path root_a=Path('/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1') root_b=Path('/mnt/c/Users/alien/scriptorium-arcontico punto cero') ignore={'venv','.venv','.git','__pycache__','.tmp.driveupload','node_modules'} def top_entries(root): out=[] for p in root.iterdir(): if p.name in ignore: continue out.append((p.name, 'dir' if p.is_dir() else 'file')) return set(out) a=top_entries(root_a) b=top_entries(root_b) print('ONLY_A') for name,kind in sorted(a-b): print(kind, name) print('ONLY_B') for name,kind in sorted(b-a): print(kind, name) print('BOTH') for name,kind in sorted(a & b): print(kind, name) PY
+
+
+Terminal en segundo plano completado con if [ -x '/mnt/c/Program Files/nodejs/node.exe' ]; then '/mnt/c/Program Files/nodejs/node.exe' --version && cd '/mnt/c/Users/alien/scriptorium-arcontico punto cero' && '/mnt/c/Program Files/nodejs/node.exe' test.js && printf '\n---\n' && '/mnt/c/Program Files/nodejs/node.exe' test_parser.js; else echo 'node.exe missing'; fi
+
+
+Terminal en segundo plano completado con python3 - <<'PY' from pathlib import Path import os roots=[('/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1','SCRIPTORIUM_0_1'),('/mnt/c/Users/alien/scriptorium-arcontico punto cero','PUNTO_CERO')] ignore={'venv','.venv','.git','__pycache__','.tmp.driveupload','node_modules'} for root,label in roots: total_files=0; total_dirs=0 for dirpath, dirnames, filenames in os.walk(root): dirnames[:]=[d for d in dirnames if d not in ignore] total_dirs += len(dirnames) total_files += len(filenames) print(label, 'dirs', total_dirs, 'files', total_files) PY
+
+
+Terminal en segundo plano completado con python3 - <<'PY' from pathlib import Path import hashlib pairs=[ ('1.txt','1.txt'),('2.txt','2.txt'),('3.txt','3.txt'),('4.txt','4.txt'),('5.txt','5.txt'),('6.txt','6.txt') ] a=Path('/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1') b=Path('/mnt/c/Users/alien/scriptorium-arcontico punto cero') for ra,rb in pairs: pa=a/ra; pb=b/rb same=pa.read_bytes()==pb.read_bytes() print(f'{ra}:', 'same' if same else 'different', pa.stat().st_size, pb.stat().st_size) PY
+
+
+Ya tengo la diferencia de escala: PUNTO_CERO tiene 38 directorios y 370 archivos útiles frente a 10 directorios y 61 archivos en SCRIPTORIUM🜇 0.1, y los 1.txt–6.txt son idénticos byte a byte en ambos lados. Voy a revisar el estado del worktree y algunos archivos canónicos para fijar si esta rama está viva o simplemente congelada a medias.
+
+Explorado(s) 8 archivos
+Terminal en segundo plano completado con printf '===== git diff --stat =====\n'; git -C '/mnt/c/Users/alien/scriptorium-arcontico punto cero' diff --stat; printf '\n===== git show --stat --reverse =====\n'; git -C '/mnt/c/Users/alien/scriptorium-arcontico punto cero' log --stat --reverse --format='%h %ad %s' --date=short
+
+
+Explorado(s) 1 búsqueda
+Hay una señal importante: PUNTO_CERO sí tuvo commits de implementación real y tiene los assets/packs dentro del historial, pero hoy el árbol de trabajo está muy desalineado del último commit y al menos una prueba base del parser falla. Voy a leer el parser ritual y el transformador para ubicar el fallo con precisión antes de redactar el dictamen.
+
+Explorado(s) 5 archivos
+Terminal en segundo plano completado con python3 - <<'PY' from pathlib import Path import os root='/mnt/c/Users/alien/scriptorium-arcontico punto cero' for p in ['README.md','.github','.editorconfig','CONTRIBUTING.md']: print(p, os.path.exists(os.path.join(root,p))) PY
+
+
+Explorado(s) 3 archivos
+Voy a probar el runner real con un .arc existente. Si falla, eso me permite cerrar la auditoría con estado operativo verificable y no sólo con lectura de archivos.
+
+Terminal en segundo plano completado con cd '/mnt/c/Users/alien/scriptorium-arcontico punto cero' && '/mnt/c/Program Files/nodejs/node.exe' engine/runner.js pipelines/reels/madonna_hibrida/madonna_hibrida_master.arc
+
+
+Explorado(s) 2 listas
+Voy a dejar dos entregables dentro de scriptorium-arcontico punto cero: la auditoría de esta rama y una comparativa explícita contra SCRIPTORIUM🜇 0.1, para que quede canonizado y no sólo en la conversación.
+
+diff --git a//mnt/c/Users/alien/scriptorium-arcontico punto cero/AUDITORIA_PUNTO_CERO.md b//mnt/c/Users/alien/scriptorium-arcontico punto cero/AUDITORIA_PUNTO_CERO.md
+new file mode 100644
+--- /dev/null
++++ b//mnt/c/Users/alien/scriptorium-arcontico punto cero/AUDITORIA_PUNTO_CERO.md
+@@ -0,0 +1,330 @@
++# Auditoría Técnica de `scriptorium-arcontico punto cero`
++
++Fecha de auditoría: 2026-04-02
++
++## 1. Dictamen ejecutivo
++
++`scriptorium-arcontico punto cero` es la rama técnica pesada del ecosistema Scriptorium.
++
++Aquí sí existe un motor reconocible:
++
++- ARC DSL,
++- lexer,
++- parser,
++- AST,
++- runner,
++- export CapCut,
++- pipelines,
++- assets,
++- audio,
++- y packs audiovisuales.
++
++Pero el estado actual no es limpio ni estable.
++
++Diagnóstico resumido:
++
++- hay evidencia clara de implementación real y outputs reales;
++- el repositorio está fuertemente orientado a video/timeline/export;
++- el árbol de trabajo está muy desalineado del último commit;
++- el parser y el runner no comparten todavía un contrato consistente;
++- la documentación es más esquemática que operativa;
++- el proyecto conserva intentos editoriales paralelos (`AGENTS.md`, `SCRIPTORIUM_ARCONTICO`, `arconte`) que no terminaron de integrarse.
++
++No es una carpeta conceptual.
++Es una base técnica viva, pero todavía frágil.
++
++## 2. Inventario funcional
++
++### 2.1 Núcleo del motor
++
++Directorios principales:
++
++- `core/`
++- `parser/`
++- `engine/`
++- `pipelines/`
++- `rituales/`
++- `tools/`
++- `test/`
++
++Qué representa:
++
++- `core/`: manifiesto, ontología, glosarios y módulos de operación ARC.
++- `parser/`: tokenización, parseo ritual/kernel, AST y transformación.
++- `engine/`: runner, acciones, conversión y exportadores.
++- `pipelines/`: fuentes `.arc`, manifests y outputs `.capcut.json`.
++- `rituales/`: rituales base del sistema.
++
++### 2.2 Capa audiovisual
++
++Directorios:
++
++- `assets/`
++- `audio/`
++- `pipelines/capcut_pack/`
++
++Qué representa:
++
++- materia prima real para composición,
++- paquetes de salida para CapCut,
++- evidencia de uso productivo del sistema.
++
++### 2.3 Capa meta/editorial superpuesta
++
++Directorios y archivos:
++
++- `AGENTS.md`
++- `SCRIPTORIUM_ARCONTICO/`
++- `arconte/`
++
++Qué representa:
++
++- intento posterior de canon editorial/tokenizado,
++- influido por la misma genealogía que luego reaparece en `SCRIPTORIUM🜇 0.1`,
++- todavía periférico respecto al motor ARC.
++
++### 2.4 Bitácora forense
++
++- `1.txt` a `6.txt`
++
++Hallazgo:
++
++- son idénticos byte a byte a los mismos archivos en `SCRIPTORIUM🜇 0.1`.
++- funcionan como memoria histórica compartida entre ambas carpetas.
++
++## 3. Origen reconstruido
++
++La carpeta nace de un proceso distinto al de `SCRIPTORIUM🜇 0.1`.
++
++Secuencia probable:
++
++1. Se parte de la exploración de prompts/agentes y del marco arcontico.
++2. El foco se desplaza al motor ARC como lenguaje ejecutable.
++3. Se construyen parser, runner y export a CapCut.
++4. Se producen reels/packs reales.
++5. Después se intenta superponer una capa editorial/canónica (`SCRIPTORIUM_ARCONTICO/`, `arconte/`, `AGENTS.md`).
++
++La relación entre capas no quedó cerrada.
++
++## 4. Estado del repositorio
++
++### 4.1 Git
++
++- Rama: `main`
++- Commits visibles: 2
++- Remotos: ninguno configurado
++
++Commit base:
++
++- `23be4b9` introduce prácticamente todo el repositorio, incluidos assets binarios grandes.
++
++Commit posterior:
++
++- `2748d21` ajusta `convert_reel.js` y un output CapCut.
++
++Conclusión:
++
++- el historial es mínimo para el tamaño real del sistema;
++- casi toda la evolución posterior quedó fuera de commits.
++
++### 4.2 Tamaño y composición
++
++Tamaño total aproximado: 396 MB
++
++Bloques más pesados:
++
++- `.git`: 174 MB
++- `assets/`: 132 MB
++- `pipelines/`: 67 MB
++- `audio/`: 23 MB
++
++Conclusión:
++
++- el repositorio versiona binarios pesados;
++- el coste de mantenimiento y diffs es alto;
++- el histórico git está inflado por assets y outputs.
++
++### 4.3 Estado del worktree
++
++El árbol está muy sucio:
++
++- decenas de archivos modificados,
++- varios eliminados,
++- múltiples archivos/directorios nuevos no commiteados,
++- cambios repartidos por `core/`, `parser/`, `engine/`, `pipelines/`, `docs/`.
++
++Impacto:
++
++- cuesta saber cuál es la versión “buena”;
++- hay riesgo alto de mezclar exploración con estado productivo.
++
++## 5. Ejecución verificada
++
++### 5.1 Node
++
++Probado con `C:\Program Files\nodejs\node.exe`:
++
++- Node existe y funciona.
++- `test.js` corre bien.
++
++### 5.2 Parser
++
++`test_parser.js`:
++
++- tokeniza correctamente,
++- pero falla en parseo con:
++  `Cannot read properties of undefined (reading 'length')`
++
++Causa observable:
++
++- `parser/arc_ritual_parser.js` espera `ast.steps`,
++- pero `parser/arc_ast.js` devuelve un documento con `sections`, no con `steps`.
++
++Conclusión:
++
++- lexer y parser no están totalmente alineados.
++
++### 5.3 Runner
++
++Probado con:
++
++- `engine/runner.js pipelines/reels/madonna_hibrida/madonna_hibrida_master.arc`
++
++Resultado:
++
++- corre sin romperse,
++- pero produce `ritual_sin_nombre`,
++- detecta sólo 2 pasos,
++- termina exportando `ritual_sin_nombre.capcut.json`.
++
++Conclusión:
++
++- el runner ejecuta una ruta simplificada,
++- pero la semántica del ritual no está bien preservada.
++
++## 6. Hallazgos críticos
++
++### 6.1 Contrato roto entre parser y consumidor
++
++Problema:
++
++- `arc_ritual_parser.js` asume `ast.name` y `ast.steps`,
++- `arc_ast.js` produce `type: "document"` y `sections`.
++
++Impacto:
++
++- pruebas fallidas,
++- integración parcial,
++- capa de parseo no confiable como fuente única de verdad.
++
++### 6.2 Runner y parser usan rutas semánticas distintas
++
++Problema:
++
++- `engine/runner.js` usa `parseARC` desde `parser/arc_parser.js`,
++- mientras el stack más “nuevo” parece vivir en `arc_lexer.mjs` + `arc_ast.js` + `arc_ritual_parser.js`.
++
++Impacto:
++
++- existen dos linajes de parser coexistiendo;
++- el motor no está realmente unificado.
++
++### 6.3 Export de voz con ruta hardcodeada
++
++`engine/preexport/voice_pipeline.js` fija:
++
++- `C:\Users\alien\AppData\Roaming\Python\Python314\Scripts\edge-tts.exe`
++
++Impacto:
++
++- acoplamiento total a una máquina concreta,
++- fragilidad al mover entorno o cambiar versión de Python.
++
++### 6.4 Documentación incompleta
++
++Archivos como:
++
++- `docs/README.md`
++- `docs/ROADMAP.md`
++- `docs/ARC_SYNTAX.md`
++- `docs/VALIDATION.md`
++
++están en forma de apuntes, no de manual operativo.
++
++Impacto:
++
++- el conocimiento real vive más en el código y en `1.txt`–`6.txt` que en `docs/`.
++
++### 6.5 Peso excesivo en git
++
++El commit inicial mete:
++
++- assets masivos,
++- audio,
++- zip de pack,
++- outputs generados.
++
++Impacto:
++
++- repositorio caro de clonar,
++- historial poco maniobrable,
++- diffs ruidosos.
++
++### 6.6 Intento de canon editorial incompleto
++
++`SCRIPTORIUM_ARCONTICO/`, `arconte/`, y lo descrito en `1.txt` apuntan a una estructura editorial más madura.
++
++Pero en esta carpeta:
++
++- no existe `README.md` raíz,
++- no existe `.github/`,
++- no existe `CONTRIBUTING.md`,
++- no existe `.editorconfig`.
++
++Conclusión:
++
++- el intento de canon no se materializó aquí;
++- quedó más como injerto documental que como reestructura efectiva.
++
++## 7. Qué sí está sólido
++
++- existe un motor real de experimentación ARC;
++- hay assets, audio y packs de salida reales;
++- hay manifests y reel sources suficientes para reconstruir intención operativa;
++- el runner sí ejecuta una parte del flujo;
++- la exportación a CapCut existe y produce archivos.
++
++## 8. Qué está a medio cocinar
++
++- unificación del parser;
++- validación robusta;
++- acciones del engine más allá de las mínimas;
++- integración limpia de voz;
++- documentación seria;
++- criterio de versionado para binarios;
++- frontera entre canon editorial y motor técnico.
++
++## 9. Lectura correcta de esta carpeta
++
++`scriptorium-arcontico punto cero` no es una versión previa “menor”.
++
++Es:
++
++- el taller mecánico del universo ARC,
++- la rama donde sí se intentó materializar el DSL y el pipeline audiovisual,
++- pero también un repositorio con deuda de arquitectura y de control de versiones.
++
++## 10. Conclusión
++
++Si `SCRIPTORIUM🜇 0.1` es el prototipo editorial-operativo, `scriptorium-arcontico punto cero` es el prototipo técnico-audiovisual.
++
++Esta carpeta contiene la infraestructura más potente del ecosistema, pero también la más desordenada.
++
++No está lista para consolidarse como producto.
++Sí está lista para una refactorización seria en la que se separen:
++
++- parser estable,
++- runner estable,
++- assets/output,
++- canon documental,
++- y experimentos.
+
+
+diff --git a//mnt/c/Users/alien/scriptorium-arcontico punto cero/COMPARATIVA_PUNTO_CERO_VS_SCRIPTORIUM_0_1.md b//mnt/c/Users/alien/scriptorium-arcontico punto cero/COMPARATIVA_PUNTO_CERO_VS_SCRIPTORIUM_0_1.md
+new file mode 100644
+--- /dev/null
++++ b//mnt/c/Users/alien/scriptorium-arcontico punto cero/COMPARATIVA_PUNTO_CERO_VS_SCRIPTORIUM_0_1.md
+@@ -0,0 +1,242 @@
++# Comparativa: `scriptorium-arcontico punto cero` vs `SCRIPTORIUM🜇 0.1`
++
++Fecha de comparación: 2026-04-02
++
++## 1. Resumen corto
++
++Las dos carpetas comparten memoria histórica, pero cumplen funciones distintas.
++
++- `scriptorium-arcontico punto cero` = motor ARC, parser, runner, pipelines, assets, audio, export audiovisual.
++- `SCRIPTORIUM🜇 0.1` = sistema editorial/generador de contenido con glosario, prompts, outputs Markdown y prototipo de sync con Notion.
++
++No son duplicados.
++Son ramas divergentes del mismo linaje.
++
++## 2. Coincidencias reales
++
++Coinciden exactamente en:
++
++- `1.txt`
++- `2.txt`
++- `3.txt`
++- `4.txt`
++- `5.txt`
++- `6.txt`
++
++Hallazgo:
++
++- los seis archivos son idénticos byte a byte en ambas carpetas.
++- funcionan como memoria compartida del proyecto.
++
++Coincidencias estructurales:
++
++- ambas son carpetas git sin remotos configurados,
++- ambas carecen de `.gitignore`,
++- ambas mezclan contenido útil con residuos o estados no consolidados.
++
++## 3. Diferencias de escala
++
++### `SCRIPTORIUM🜇 0.1`
++
++- tamaño aproximado: 53 MB
++- directorios útiles: 10
++- archivos útiles: 61
++
++### `scriptorium-arcontico punto cero`
++
++- tamaño aproximado: 396 MB
++- directorios útiles: 38
++- archivos útiles: 370
++
++Lectura:
++
++- `PUNTO_CERO` es mucho más grande, técnico y pesado;
++- `0.1` es más compacto y orientado a contenido.
++
++## 4. Diferencia de propósito
++
++### `SCRIPTORIUM🜇 0.1`
++
++Objetivo dominante:
++
++- convertir glosario en contenido publicable,
++- generar Markdown y JSON,
++- operar con Notion y LLM.
++
++Piezas centrales:
++
++- `glosario_generator.py`
++- `scriptorium.py`
++- `publicar_hilo.py`
++- `02_GLOSARIOS/glosario_maestro.json`
++- `contenido_generado/`
++
++### `scriptorium-arcontico punto cero`
++
++Objetivo dominante:
++
++- ejecutar rituales ARC,
++- construir timeline,
++- exportar a CapCut,
++- trabajar reels/packs audiovisuales.
++
++Piezas centrales:
++
++- `parser/`
++- `engine/`
++- `pipelines/`
++- `assets/`
++- `audio/`
++
++## 5. Diferencia de madurez
++
++### `SCRIPTORIUM🜇 0.1`
++
++Más maduro en:
++
++- articulación conceptual,
++- glosario JSON usable,
++- prompts de generación,
++- salidas textuales visibles,
++- conexión clara con publicación escrita.
++
++Más débil en:
++
++- disciplina de dependencias,
++- publicación automatizada real,
++- seguridad de secretos,
++- consistencia entre scripts.
++
++### `scriptorium-arcontico punto cero`
++
++Más maduro en:
++
++- existencia de un stack técnico real para DSL/timeline/export,
++- material audiovisual y outputs concretos,
++- capacidad de ejecutar al menos una ruta del pipeline.
++
++Más débil en:
++
++- contrato interno del parser,
++- documentación operativa,
++- control de versiones,
++- separación entre producto y experimento.
++
++## 6. Diferencia en versionado
++
++### `SCRIPTORIUM🜇 0.1`
++
++- 4 commits
++- historial centrado en documentación
++- la automatización real está fuera de git
++
++### `scriptorium-arcontico punto cero`
++
++- 2 commits
++- historial centrado en implementación y assets
++- el trabajo posterior dejó el árbol profundamente sucio
++
++Lectura:
++
++- `0.1` versiona el discurso del sistema;
++- `PUNTO_CERO` versiona el arranque técnico del sistema.
++
++## 7. Comparación por riesgo
++
++### Riesgos principales en `SCRIPTORIUM🜇 0.1`
++
++- secreto expuesto en código,
++- `venv` roto y duplicado,
++- dependencia faltante (`anthropic`),
++- incompatibilidad entre generador y publicador,
++- outputs contaminados con `<thinking_process>`.
++
++### Riesgos principales en `scriptorium-arcontico punto cero`
++
++- parser no alineado con su consumidor,
++- múltiples linajes de parser coexistiendo,
++- hardcodes de rutas Windows,
++- worktree excesivamente divergente,
++- git inflado con binarios y outputs.
++
++## 8. Qué carpeta contiene qué verdad
++
++### Verdad conceptual
++
++Gana `SCRIPTORIUM🜇 0.1`
++
++Porque concentra:
++
++- manifiesto,
++- ontología,
++- glosarios,
++- prompts,
++- movimientos,
++- experimentos editoriales,
++- outputs textuales utilizables.
++
++### Verdad técnica audiovisual
++
++Gana `scriptorium-arcontico punto cero`
++
++Porque concentra:
++
++- el DSL,
++- parser/lexer/AST,
++- runner,
++- voz,
++- exportador,
++- assets,
++- audio,
++- reels y packs.
++
++## 9. Solapamientos
++
++El solapamiento entre ambas carpetas no es de archivos funcionales, sino de narrativa del proyecto.
++
++Comparten:
++
++- origen,
++- vocabulario,
++- memoria de decisiones,
++- estética arcontica,
++- idea de “movimientos” y “prompt ritual”.
++
++No comparten:
++
++- el mismo producto,
++- el mismo runtime,
++- la misma arquitectura final.
++
++## 10. Conclusión estratégica
++
++La mejor lectura no es “cuál reemplaza a cuál”.
++
++La lectura correcta es:
++
++- `scriptorium-arcontico punto cero` contiene el motor audiovisual/ARC;
++- `SCRIPTORIUM🜇 0.1` contiene la capa editorial/generativa/Notion.
++
++Si quisieras consolidar ambos mundos, la fusión sensata sería:
++
++1. tomar de `PUNTO_CERO` el motor ARC, runner, export y assets;
++2. tomar de `0.1` el glosario maestro, prompts híbridos, outputs textuales y disciplina editorial;
++3. reconstruir un repositorio nuevo con fronteras claras entre:
++   - `canon/`
++   - `engine/`
++   - `content/`
++   - `runtime/outputs/`
++   - `assets/`
++
++## 11. Juicio final
++
++`SCRIPTORIUM🜇 0.1` es más legible.
++
++`scriptorium-arcontico punto cero` es más potente.
++
++`SCRIPTORIUM🜇 0.1` está más cerca de una herramienta editorial.
++
++`scriptorium-arcontico punto cero` está más cerca de un laboratorio técnico de media engine.
++
++Ninguna de las dos carpetas está lista para convertirse sola en el repositorio maestro.
++Las dos contienen piezas necesarias.
+
+Dejé la segunda auditoría en [AUDITORIA_PUNTO_CERO.md](/mnt/c/Users/alien/scriptorium-arcontico%20punto%20cero/AUDITORIA_PUNTO_CERO.md) y la comparación entre ambas carpetas en [COMPARATIVA_PUNTO_CERO_VS_SCRIPTORIUM_0_1.md](/mnt/c/Users/alien/scriptorium-arcontico%20punto%20cero/COMPARATIVA_PUNTO_CERO_VS_SCRIPTORIUM_0_1.md).
+
+El veredicto corto es este: [scriptorium-arcontico punto cero](/mnt/c/Users/alien/scriptorium-arcontico%20punto%20cero) es la rama técnica pesada, con parser/runner/export/assets/pipelines reales; [SCRIPTORIUM🜇 0.1](/mnt/c/Users/alien/SCRIPTORIUM🜇%200.1) es la rama editorial/generativa, con glosario JSON, prompts híbridos, outputs Markdown y prototipo Notion/LLM. No son duplicados: son dos ramas divergentes del mismo linaje, y los `1.txt` a `6.txt` son idénticos en ambas.
+
+Verifiqué también ejecución real en `PUNTO_CERO`: `test.js` corre, `test_parser.js` falla por contrato roto entre [arc_ritual_parser.js](/mnt/c/Users/alien/scriptorium-arcontico%20punto%20cero/parser/arc_ritual_parser.js) y [arc_ast.js](/mnt/c/Users/alien/scriptorium-arcontico%20punto%20cero/parser/arc_ast.js), y el runner sí ejecuta un `.arc`, pero degrada a `ritual_sin_nombre` al exportar, lo que confirma que el motor existe pero sigue frágil. También confirmé que ambas carpetas siguen sin `.gitignore`.
+
+Si quieres, el siguiente paso útil ya no es otra auditoría: es una matriz de fusión. Puedo proponerte un “repositorio maestro” que tome el motor ARC de `PUNTO_CERO` y la capa editorial de `0.1`, con estructura final y plan de migración.
+
+Voy a convertir las dos auditorías en una matriz operativa: qué se conserva, qué se fusiona, qué se descarta y a qué ruta debería ir cada bloque en un repositorio maestro.
+
+diff --git a//mnt/c/Users/alien/MATRIZ_FUSION_SCRIPTORIUM.md b//mnt/c/Users/alien/MATRIZ_FUSION_SCRIPTORIUM.md
+new file mode 100644
+--- /dev/null
++++ b//mnt/c/Users/alien/MATRIZ_FUSION_SCRIPTORIUM.md
+@@ -0,0 +1,316 @@
++# Matriz de Fusión Scriptorium
++
++Fecha: 2026-04-02
++
++Fuentes auditadas:
++
++- `C:\Users\alien\SCRIPTORIUM🜇 0.1`
++- `C:\Users\alien\scriptorium-arcontico punto cero`
++
++## 1. Objetivo de la fusión
++
++Construir un repositorio maestro que una:
++
++- la capa editorial/generativa de `SCRIPTORIUM🜇 0.1`,
++- con la capa técnica/audiovisual de `scriptorium-arcontico punto cero`,
++
++sin arrastrar:
++
++- secretos expuestos,
++- binarios innecesarios en git,
++- outputs accidentales,
++- contratos rotos entre parser/runner/generador.
++
++## 2. Principio rector
++
++No fusionar carpetas enteras.
++
++Fusionar por dominio funcional.
++
++Eso evita repetir el error actual:
++
++- una carpeta demasiado conceptual pero técnica incompleta,
++- y otra demasiado técnica pero editorialmente dispersa.
++
++## 3. Veredicto por dominio
++
++| Dominio | Fuente dominante | Decisión | Destino propuesto |
++|---|---|---|---|
++| Manifiesto y ontología editorial | `SCRIPTORIUM🜇 0.1` | Conservar y migrar | `canon/00_manifiesto/`, `canon/01_ontologia/` |
++| Glosario editorial listo para LLM | `SCRIPTORIUM🜇 0.1` | Conservar y migrar | `canon/02_glosarios/` |
++| Core ARC en `.arc` | `PUNTO_CERO` | Conservar y normalizar | `arc/core/` |
++| Rituales base `.arc` | `PUNTO_CERO` | Conservar y depurar | `arc/rituales/` |
++| Parser ARC | `PUNTO_CERO` | Conservar, refactor obligatorio | `engine/parser/` |
++| Runner ARC | `PUNTO_CERO` | Conservar, refactor obligatorio | `engine/runner/` |
++| Export CapCut | `PUNTO_CERO` | Conservar | `engine/exporters/` |
++| Preexport voz/subtítulos | `PUNTO_CERO` | Conservar, deshardcodear | `engine/preexport/` |
++| Generador LLM para glosario | `SCRIPTORIUM🜇 0.1` | Conservar, corregir | `integrations/llm/` |
++| Sync Notion | `SCRIPTORIUM🜇 0.1` | Conservar como prototipo | `integrations/notion/` |
++| Publicador X/Twitter | `SCRIPTORIUM🜇 0.1` | Conservar, reescribir contrato | `integrations/publishing/` |
++| Prompt base híbrido | `SCRIPTORIUM🜇 0.1` | Conservar | `canon/03_prompts_base/` |
++| AGENTS / meta-arconte | `PUNTO_CERO` | Conservar selectivamente | `canon/04_agents/` |
++| Experimentos editoriales | `SCRIPTORIUM🜇 0.1` | Conservar | `canon/05_experimentos/` |
++| Pipelines reels/stories/feed | `PUNTO_CERO` | Conservar | `pipelines/` |
++| Assets visuales | `PUNTO_CERO` | Conservar fuera de git pesado | `assets/source/` |
++| Audio | `PUNTO_CERO` | Conservar fuera de git pesado | `assets/audio/` |
++| Packs y outputs generados | ambos | No canonizar | `runtime/outputs/` |
++| Caches | `SCRIPTORIUM🜇 0.1` | No canonizar | `runtime/cache/` |
++| Transcripciones `1.txt`–`6.txt` | ambos | Conservar como memoria | `logs/origen/` |
++
++## 4. Estructura objetivo del repositorio maestro
++
++```text
++scriptorium-maestro/
++├── README.md
++├── .gitignore
++├── .env.example
++├── canon/
++│   ├── 00_manifiesto/
++│   ├── 01_ontologia/
++│   ├── 02_glosarios/
++│   ├── 03_prompts_base/
++│   ├── 04_agents/
++│   └── 05_experimentos/
++├── arc/
++│   ├── core/
++│   └── rituales/
++├── engine/
++│   ├── parser/
++│   ├── runner/
++│   ├── actions/
++│   ├── exporters/
++│   └── preexport/
++├── integrations/
++│   ├── llm/
++│   ├── notion/
++│   └── publishing/
++├── pipelines/
++│   ├── reels/
++│   ├── stories/
++│   ├── feed/
++│   ├── carruseles/
++│   └── weekly/
++├── assets/
++│   ├── source/
++│   ├── audio/
++│   └── packs/
++├── runtime/
++│   ├── cache/
++│   ├── outputs/
++│   └── temp/
++├── tests/
++├── docs/
++└── logs/
++    └── origen/
++```
++
++## 5. Matriz detallada de migración
++
++### 5.1 Canon editorial
++
++| Origen actual | Acción | Destino nuevo | Motivo |
++|---|---|---|---|
++| `SCRIPTORIUM🜇 0.1/00_MANIFIESTO/` | Migrar | `canon/00_manifiesto/` | Base conceptual más legible |
++| `SCRIPTORIUM🜇 0.1/01_ONTOLOGIA/` | Migrar | `canon/01_ontologia/` | Ontología editorial ya usable |
++| `SCRIPTORIUM🜇 0.1/02_GLOSARIOS/` | Migrar | `canon/02_glosarios/` | Glosarios mejor articulados |
++| `SCRIPTORIUM🜇 0.1/03_PROMPTS_BASE/` | Migrar | `canon/03_prompts_base/` | Prompt base híbrido ya operativo |
++| `SCRIPTORIUM🜇 0.1/04_MOVIMIENTOS/` | Migrar | `docs/movimientos/` | Memoria de hitos, no runtime |
++| `SCRIPTORIUM🜇 0.1/05_EXPERIMENTOS/` | Migrar | `canon/05_experimentos/` | Evidencia editorial valiosa |
++| `PUNTO_CERO/AGENTS.md` | Extraer y fragmentar | `canon/04_agents/` | Demasiado mezclado para vivir como archivo único |
++| `PUNTO_CERO/SCRIPTORIUM_ARCONTICO/` | Revisar manualmente | `canon/04_agents/` o `docs/legacy/` | Intento de canon incompleto |
++| `PUNTO_CERO/arconte/` | Revisar manualmente | `docs/legacy/` | Compatibilidad/archivo histórico |
++
++### 5.2 Núcleo ARC
++
++| Origen actual | Acción | Destino nuevo | Motivo |
++|---|---|---|---|
++| `PUNTO_CERO/core/` | Migrar | `arc/core/` | Núcleo real del DSL |
++| `PUNTO_CERO/rituales/` | Migrar | `arc/rituales/` | Rituales base del sistema |
++| `PUNTO_CERO/parser/` | Migrar con refactor | `engine/parser/` | Existe valor, pero el contrato está roto |
++| `PUNTO_CERO/engine/runner.js` | Migrar con refactor | `engine/runner/index.js` | Runner funcional pero simplificado |
++| `PUNTO_CERO/engine/engine_actions.js` | Migrar con refactor | `engine/actions/arc_actions.js` | Muy incompleto hoy |
++| `PUNTO_CERO/engine/exporters/` | Migrar | `engine/exporters/` | Mejor pieza cerrada del stack |
++| `PUNTO_CERO/engine/preexport/` | Migrar con refactor | `engine/preexport/` | Útil, pero hardcodeado |
++
++### 5.3 Integraciones
++
++| Origen actual | Acción | Destino nuevo | Motivo |
++|---|---|---|---|
++| `SCRIPTORIUM🜇 0.1/glosario_generator.py` | Migrar con refactor | `integrations/llm/glosario_generator.py` | Conecta bien glosario y publicación |
++| `SCRIPTORIUM🜇 0.1/scriptorium.py` | Migrar con refactor | `integrations/notion/sync_manager.py` | Prototipo valioso, modelo de datos flojo |
++| `SCRIPTORIUM🜇 0.1/publicar_hilo.py` | Reescribir antes de migrar | `integrations/publishing/publish_x.py` | Contrato roto con outputs actuales |
++| `SCRIPTORIUM🜇 0.1/test_connection.py` | No migrar tal cual | `tests/integrations/test_notion_config.py` | Contiene secreto expuesto |
++
++### 5.4 Pipelines y media
++
++| Origen actual | Acción | Destino nuevo | Motivo |
++|---|---|---|---|
++| `PUNTO_CERO/pipelines/reels/` | Migrar | `pipelines/reels/` | Fuente principal de video |
++| `PUNTO_CERO/pipelines/stories/` | Migrar | `pipelines/stories/` | Misma familia de ejecución |
++| `PUNTO_CERO/pipelines/feed/` | Migrar | `pipelines/feed/` | Misma familia de ejecución |
++| `PUNTO_CERO/pipelines/carruseles/` | Migrar | `pipelines/carruseles/` | Útil como contenido fuente |
++| `PUNTO_CERO/pipelines/weekly/` | Migrar | `pipelines/weekly/` | Estructura de calendario |
++| `PUNTO_CERO/assets/` | Migrar selectivamente | `assets/source/` | No todo debe ir a git |
++| `PUNTO_CERO/audio/` | Migrar selectivamente | `assets/audio/` | Igual criterio |
++| `PUNTO_CERO/pipelines/capcut_pack/` | No canonizar completo | `runtime/outputs/capcut_pack/` | Es output, no fuente |
++| `SCRIPTORIUM🜇 0.1/contenido_generado/` | No canonizar completo | `runtime/outputs/content/` | Output editorial |
++
++### 5.5 Memoria y trazabilidad
++
++| Origen actual | Acción | Destino nuevo | Motivo |
++|---|---|---|---|
++| ambos `1.txt`–`6.txt` | Migrar una sola copia | `logs/origen/` | Origen histórico común |
++| auditorías actuales | Migrar | `docs/auditorias/` | Base de gobierno del sistema |
++| caches JSON | No canonizar | `runtime/cache/` | Estado derivado |
++
++## 6. Qué no debe fusionarse tal cual
++
++### No migrar sin saneamiento
++
++- `SCRIPTORIUM🜇 0.1/test_connection.py`
++- `SCRIPTORIUM🜇 0.1/.env`
++- `SCRIPTORIUM🜇 0.1/.env copy`
++- `SCRIPTORIUM🜇 0.1/venv/`
++- `SCRIPTORIUM🜇 0.1/.venv/`
++- `SCRIPTORIUM🜇 0.1/.tmp.driveupload/`
++- `SCRIPTORIUM🜇 0.1/__pycache__/`
++- `PUNTO_CERO` outputs `.capcut.json` como fuente canónica
++- `PUNTO_CERO` zips de packs como fuente canónica
++- `PUNTO_CERO` assets masivos dentro del historial git
++
++### Migrar sólo como legado
++
++- `PUNTO_CERO/SCRIPTORIUM_ARCONTICO/`
++- `PUNTO_CERO/arconte/`
++
++Porque:
++
++- contienen valor documental,
++- pero no están plenamente integrados al motor ni al canon actual.
++
++## 7. Conflictos que hay que resolver antes de fusionar
++
++### Conflicto 1: dos lenguajes de verdad
++
++- En `0.1`, la verdad vive en Markdown/JSON/glosario.
++- En `PUNTO_CERO`, la verdad vive en `.arc`/timeline/export.
++
++Resolución:
++
++- `canon/` define conceptos.
++- `arc/` define ejecución.
++
++### Conflicto 2: dos pipelines distintos
++
++- `0.1` produce texto para redes/blog.
++- `PUNTO_CERO` produce secuencias audiovisuales.
++
++Resolución:
++
++- mantener ambos como productos de un mismo núcleo semántico,
++- no forzar que uno reemplace al otro.
++
++### Conflicto 3: parser fragmentado
++
++- `PUNTO_CERO` tiene más de una ruta de parseo.
++
++Resolución:
++
++- escoger una sola cadena oficial:
++  `lexer -> ast -> transform -> runner`
++
++### Conflicto 4: outputs mezclados con fuentes
++
++Resolución:
++
++- todo lo generado vive en `runtime/outputs/`,
++- todo lo editable vive fuera de ahí.
++
++## 8. Reglas para el repositorio maestro
++
++### Regla 1
++
++`canon/` nunca ejecuta nada.
++Sólo define semántica, textos, glosarios y prompts.
++
++### Regla 2
++
++`engine/` no contiene doctrina editorial.
++Sólo runtime, parser, acciones y exportadores.
++
++### Regla 3
++
++`integrations/` es puente hacia servicios externos:
++
++- LLM,
++- Notion,
++- publicación.
++
++### Regla 4
++
++`runtime/outputs/` jamás se usa como fuente de verdad.
++
++### Regla 5
++
++Assets binarios grandes se gestionan con criterio:
++
++- Git LFS,
++- carpeta externa versionada por lotes,
++- o snapshots separados.
++
++## 9. Plan de fusión en 4 fases
++
++### Fase A — Higiene mínima
++
++1. Crear repo maestro nuevo.
++2. Añadir `.gitignore`.
++3. Añadir `.env.example`.
++4. Rotar secretos comprometidos.
++5. Definir política para assets/binarios.
++
++### Fase B — Canon
++
++1. Migrar manifiesto, ontología, glosarios y prompts desde `0.1`.
++2. Extraer material útil de `AGENTS.md`.
++3. Archivar lo demás como `legacy`.
++
++### Fase C — Motor
++
++1. Migrar `core/`, `rituales/`, `parser/`, `engine/` desde `PUNTO_CERO`.
++2. Unificar parser.
++3. Hacer que runner preserve `name`, `steps`, `timeline` y exporte semántica correcta.
++
++### Fase D — Integraciones
++
++1. Integrar `glosario_generator.py`.
++2. Integrar sync Notion.
++3. Reescribir publicador.
++4. Conectar canon editorial con pipelines ARC.
++
++## 10. Prioridad de rescate
++
++Orden recomendado de rescate:
++
++1. `SCRIPTORIUM🜇 0.1/02_GLOSARIOS/glosario_maestro.json`
++2. `SCRIPTORIUM🜇 0.1/03_PROMPTS_BASE/prompt_01_generacion_contenido_v2_HIBRIDO.md`
++3. `PUNTO_CERO/core/`
++4. `PUNTO_CERO/parser/`
++5. `PUNTO_CERO/engine/`
++6. `PUNTO_CERO/pipelines/reels/`
++7. `SCRIPTORIUM🜇 0.1/glosario_generator.py`
++8. `SCRIPTORIUM🜇 0.1/scriptorium.py`
++
++## 11. Juicio final
++
++La fusión correcta no es:
++
++- mover `PUNTO_CERO` dentro de `0.1`,
++- ni mover `0.1` dentro de `PUNTO_CERO`.
++
++La fusión correcta es construir un tercer repositorio maestro.
++
++### Fórmula de integración
++
++- `PUNTO_CERO` aporta el cuerpo del sistema.
++- `SCRIPTORIUM🜇 0.1` aporta la voz del sistema.
++- el repositorio maestro debe aportar la disciplina que hoy falta.
+
+Dejé la matriz en [MATRIZ_FUSION_SCRIPTORIUM.md](/mnt/c/Users/alien/MATRIZ_FUSION_SCRIPTORIUM.md).
+
+La conclusión operativa es simple: no conviene fusionar carpetas; conviene fusionar dominios. `scriptorium-arcontico punto cero` aporta el motor ARC, parser, runner, export y media; `SCRIPTORIUM🜇 0.1` aporta el canon editorial, el glosario maestro, los prompts híbridos y la capa de generación/publicación. La matriz ya marca qué se conserva, qué se archiva, qué se reescribe y a qué ruta debería ir cada bloque en un repositorio maestro.
+
+El siguiente paso correcto es crear ese tercer repositorio maestro y empezar por Fase A y B: higiene mínima, `.gitignore`, `.env.example`, rotación de secretos y migración del canon desde `0.1`. Si quieres, procedo ahora con el diseño concreto del árbol inicial del repo maestro y el primer lote de archivos que deberían migrarse.
+
+Voy a crear el esqueleto real del repositorio maestro y dejar preparado el lote 1 de migración segura: canon, higiene base y manifiestos de traslado. No voy a mover assets pesados ni outputs todavía; primero dejo la estructura y las reglas para que la fusión no nazca contaminada.
+
+Terminal en segundo plano completado con if [ -e '/mnt/c/Users/alien/scriptorium-maestro' ]; then echo exists; else echo missing; fi
+
+
+Terminal en segundo plano completado con mkdir -p '/mnt/c/Users/alien/scriptorium-maestro'/canon/{00_manifiesto,01_ontologia,02_glosarios,03_prompts_base,04_agents,05_experimentos} '/mnt/c/Users/alien/scriptorium-maestro'/arc/{core,rituales} '/mnt/c/Users/alien/scriptorium-maestro'/engine/{parser,runner,actions,exporters,preexport} '/mnt/c/Users/alien/scriptorium-maestro'/integrations/{llm,notion,publishing} '/mnt/c/Users/alien/scriptorium-maestro'/pipelines/{reels,stories,feed,carruseles,weekly} '/mnt/c/Users/alien/scriptorium-maestro'/assets/{source,audio,packs} '/mnt/c/Users/alien/scriptorium-maestro'/runtime/{cache,outputs,temp} '/mnt/c/Users/alien/scriptorium-maestro'/tests '/mnt/c/Users/alien/scriptorium-maestro'/docs/{auditorias,movimientos,legacy} '/mnt/c/Users/alien/scriptorium-maestro'/logs/origen
+
+
+Explorado(s) 1 lista
+Voy a fijar la base del repo maestro: README, .gitignore, .env.example, plan de migración y luego copio el lote 1 seguro, que será texto fuente canónico y memoria forense. No voy a traer todavía binarios, caches ni outputs de runtime.
+
+Terminal en segundo plano completado con git init '/mnt/c/Users/alien/scriptorium-maestro'
+
+
+Terminal en segundo plano completado con git -C '/mnt/c/Users/alien/scriptorium-maestro' branch -m main && git -C '/mnt/c/Users/alien/scriptorium-maestro' status --short --branch
+
+
+Estoy escribiendo los archivos base del repo maestro. La idea es que cualquier migración posterior tenga ya reglas explícitas y un árbol que no mezcle canon, engine y runtime.
+
+diff --git a//mnt/c/Users/alien/scriptorium-maestro/.env.example b//mnt/c/Users/alien/scriptorium-maestro/.env.example
+new file mode 100644
+--- /dev/null
++++ b//mnt/c/Users/alien/scriptorium-maestro/.env.example
+@@ -0,0 +1,17 @@
++# LLM
++ANTHROPIC_API_KEY=
++ANTHROPIC_BASE_URL=
++SCRIPTORIUM_MODEL=
++
++# Notion
++NOTION_API_TOKEN=
++NOTION_DATABASE_ID=
++
++# Publishing
++TWITTER_API_KEY=
++TWITTER_API_SECRET=
++TWITTER_ACCESS_TOKEN=
++TWITTER_ACCESS_TOKEN_SECRET=
++
++# Optional media tools
++EDGE_TTS_PATH=
+
+diff --git a//mnt/c/Users/alien/scriptorium-maestro/.gitignore b//mnt/c/Users/alien/scriptorium-maestro/.gitignore
+new file mode 100644
+--- /dev/null
++++ b//mnt/c/Users/alien/scriptorium-maestro/.gitignore
+@@ -0,0 +1,39 @@
++# Secrets
++.env
++.env.*
++!.env.example
++
++# Python
++__pycache__/
++*.pyc
++.pytest_cache/
++.mypy_cache/
++.ruff_cache/
++.venv/
++venv/
++
++# Node
++node_modules/
++npm-debug.log*
++
++# Runtime
++runtime/cache/**
++runtime/outputs/**
++runtime/temp/**
++!runtime/cache/.gitkeep
++!runtime/outputs/.gitkeep
++!runtime/temp/.gitkeep
++
++# OS / editors
++.DS_Store
++Thumbs.db
++.idea/
++.vscode/*.log
++
++# Generated packs and media exports
++*.capcut.json
++*.zip
++
++# Keep source assets curated separately if needed
++assets/packs/**
++!assets/packs/.gitkeep
+
+diff --git a//mnt/c/Users/alien/scriptorium-maestro/README.md b//mnt/c/Users/alien/scriptorium-maestro/README.md
+new file mode 100644
+--- /dev/null
++++ b//mnt/c/Users/alien/scriptorium-maestro/README.md
+@@ -0,0 +1,50 @@
++# Scriptorium Maestro
++
++Repositorio maestro para unificar dos linajes del proyecto:
++
++- `SCRIPTORIUM🜇 0.1`: canon editorial, glosarios, prompts híbridos, generación textual.
++- `scriptorium-arcontico punto cero`: motor ARC, parser, runner, pipelines audiovisuales y export CapCut.
++
++## Principio de arquitectura
++
++El repositorio se organiza por dominios:
++
++- `canon/`: verdad editorial y semántica.
++- `arc/`: módulos fuente del lenguaje ARC.
++- `engine/`: parser, runner, acciones y exportadores.
++- `integrations/`: puentes con LLM, Notion y publicación.
++- `pipelines/`: fuentes de ejecución.
++- `assets/`: material fuente y paquetes pesados.
++- `runtime/`: outputs, caché y temporales no canónicos.
++- `docs/`: auditorías, migración y gobierno técnico.
++- `logs/`: memoria histórica y trazabilidad.
++
++## Regla de oro
++
++Nada generado en `runtime/` puede convertirse en fuente de verdad.
++
++La verdad del sistema vive en:
++
++- `canon/`
++- `arc/`
++- `engine/`
++- `integrations/`
++- `pipelines/`
++
++## Estado
++
++Este repositorio nace como scaffold de consolidación.
++
++Lote 1 migrado:
++
++- base de higiene (`.gitignore`, `.env.example`)
++- auditorías
++- memoria de origen
++- primer bloque de canon editorial
++
++Lotes siguientes:
++
++- unificación del parser ARC
++- rescate del runner y exportadores
++- integración LLM/Notion/publicación
++- política de assets y binarios
+
+diff --git a//mnt/c/Users/alien/scriptorium-maestro/docs/ARQUITECTURA_REPO.md b//mnt/c/Users/alien/scriptorium-maestro/docs/ARQUITECTURA_REPO.md
+new file mode 100644
+--- /dev/null
++++ b//mnt/c/Users/alien/scriptorium-maestro/docs/ARQUITECTURA_REPO.md
+@@ -0,0 +1,72 @@
++# Arquitectura del Repositorio Maestro
++
++## Capas
++
++### `canon/`
++
++Material humano-legible y semántico:
++
++- manifiesto,
++- ontología,
++- glosarios,
++- prompts,
++- agentes,
++- experimentos editoriales.
++
++### `arc/`
++
++Fuente declarativa del universo ARC:
++
++- módulos `core`,
++- rituales base.
++
++### `engine/`
++
++Runtime del sistema:
++
++- parser,
++- transform,
++- runner,
++- acciones,
++- exportadores,
++- preexport.
++
++### `integrations/`
++
++Conectores externos:
++
++- LLM,
++- Notion,
++- publicación.
++
++### `pipelines/`
++
++Fuentes de ejecución:
++
++- reels,
++- stories,
++- feed,
++- carruseles,
++- weekly.
++
++### `assets/`
++
++Material fuente pesado o curado.
++
++No debe contaminar el núcleo del repositorio con outputs accidentales.
++
++### `runtime/`
++
++Estado derivado:
++
++- caché,
++- outputs,
++- temporales.
++
++## Reglas
++
++1. `canon/` no contiene secretos ni outputs.
++2. `engine/` no contiene doctrina editorial extensa.
++3. `runtime/` nunca es fuente de verdad.
++4. Los assets pesados se migran de forma controlada.
++5. Cualquier parser nuevo debe ajustarse al mismo contrato de AST.
+
+diff --git a//mnt/c/Users/alien/scriptorium-maestro/docs/MIGRACION_LOTE_1.md b//mnt/c/Users/alien/scriptorium-maestro/docs/MIGRACION_LOTE_1.md
+new file mode 100644
+--- /dev/null
++++ b//mnt/c/Users/alien/scriptorium-maestro/docs/MIGRACION_LOTE_1.md
+@@ -0,0 +1,68 @@
++# Migración Lote 1
++
++Objetivo:
++
++- establecer base limpia,
++- rescatar la memoria forense,
++- migrar el canon editorial seguro,
++- evitar binarios, caches y secretos.
++
++## Incluye
++
++### Base de repositorio
++
++- `README.md`
++- `.gitignore`
++- `.env.example`
++- `docs/ARQUITECTURA_REPO.md`
++- este archivo
++
++### Auditorías
++
++- auditoría de `SCRIPTORIUM🜇 0.1`
++- auditoría de `scriptorium-arcontico punto cero`
++- comparativa entre ambas
++- matriz de fusión
++
++### Memoria histórica
++
++- `1.txt` a `6.txt` en `logs/origen/`
++
++### Canon editorial seguro
++
++- manifiesto
++- ontología
++- glosarios editoriales
++- glosario maestro JSON
++- prompts base híbridos
++- movimientos y experimentos textuales
++
++## No incluye todavía
++
++- secretos
++- `.env`
++- `venv/` o `.venv/`
++- binarios pesados
++- audio
++- packs zip
++- `.capcut.json`
++- caches
++- scripts Python/Node con contratos rotos sin refactor previo
++
++## Lote 2 sugerido
++
++- `arc/core/`
++- `arc/rituales/`
++- `engine/exporters/`
++- `engine/preexport/`
++- parser unificado
++
++## Lote 3 sugerido
++
++- `integrations/llm/`
++- `integrations/notion/`
++- `integrations/publishing/`
++
++## Riesgo principal
++
++No arrastrar al repo maestro las incoherencias de contrato entre parser, runner y outputs.
+
+
+Voy a importar el lote 1 seguro desde SCRIPTORIUM🜇 0.1 y las auditorías. Todo lo que entre ahora será texto fuente o memoria, sin binarios ni runtime.
+
+Terminal en segundo plano completado con cp '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/AUDITORIA_SCRIPTORIUM_0_1.md' '/mnt/c/Users/alien/scriptorium-maestro/docs/auditorias/AUDITORIA_SCRIPTORIUM_0_1.md' cp '/mnt/c/Users/alien/scriptorium-arcontico punto cero/AUDITORIA_PUNTO_CERO.md' '/mnt/c/Users/alien/scriptorium-maestro/docs/auditorias/AUDITORIA_PUNTO_CERO.md' cp '/mnt/c/Users/alien/scriptorium-arcontico punto cero/COMPARATIVA_PUNTO_CERO_VS_SCRIPTORIUM_0_1.md' '/mnt/c/Users/alien/scriptorium-maestro/docs/auditorias/COMPARATIVA_PUNTO_CERO_VS_SCRIPTORIUM_0_1.md' cp '/mnt/c/Users/alien/MATRIZ_FUSION_SCRIPTORIUM.md' '/mnt/c/Users/alien/scriptorium-maestro/docs/auditorias/MATRIZ_FUSION_SCRIPTORIUM.md'
+
+
+Terminal en segundo plano completado con cp '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/00_MANIFIESTO/manifiesto_arcontico.md' '/mnt/c/Users/alien/scriptorium-maestro/canon/00_manifiesto/manifiesto_arcontico.md' cp '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/01_ONTOLOGIA/ontologia_prompt_ritual.md' '/mnt/c/Users/alien/scriptorium-maestro/canon/01_ontologia/ontologia_prompt_ritual.md' cp '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/02_GLOSARIOS/ConcienciaHibrida/glosario_v2.md' '/mnt/c/Users/alien/scriptorium-maestro/canon/02_glosarios/glosario_conciencia_hibrida_v2.md' cp '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/02_GLOSARIOS/Programacion/glosario_programacion_v1.md' '/mnt/c/Users/alien/scriptorium-maestro/canon/02_glosarios/glosario_programacion_v1.md' cp '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/02_GLOSARIOS/glosario_maestro.json' '/mnt/c/Users/alien/scriptorium-maestro/canon/02_glosarios/glosario_maestro.json' cp '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/03_PROMPTS_BASE/prompt_01_generacion_contenido.md' '/mnt/c/Users/alien/scriptorium-maestro/canon/03_prompts_base/prompt_01_generacion_contenido.md' cp '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/03_PROMPTS_BASE/prompt_01_generacion_contenido_v2_HIBRIDO.md' '/mnt/c/Users/alien/scriptorium-maestro/canon/03_prompts_base/prompt_01_generacion_contenido_v2_hibrido.md' cp '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/05_EXPERIMENTOS/experimento_01_prompt_ritual.md' '/mnt/c/Users/alien/scriptorium-maestro/canon/05_experimentos/experimento_01_prompt_ritual.md' cp '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/05_EXPERIMENTOS/experimento_01_FINAL_PUBLISH.md' '/mnt/c/Users/alien/scriptorium-maestro/canon/05_experimentos/experimento_01_final_publish.md' cp '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/05_EXPERIMENTOS/experimento_02_cibernetica_existencial.md' '/mnt/c/Users/alien/scriptorium-maestro/canon/05_experimentos/experimento_02_cibernetica_existencial.md' cp '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/04_MOVIMIENTOS/movimiento_4_validacion.md' '/mnt/c/Users/alien/scriptorium-maestro/docs/movimientos/movimiento_4_validacion.md' cp '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/04_MOVIMIENTOS/movimiento_6_publicacion_real.md' '/mnt/c/Users/alien/scriptorium-maestro/docs/movimientos/movimiento_6_publicacion_real.md' cp '/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/04_MOVIMIENTOS/publicacion_01_medium_url.txt' '/mnt/c/Users/alien/scriptorium-maestro/docs/movimientos/publicacion_01_medium_url.txt'
+
+
+Terminal en segundo plano completado con for f in 1.txt 2.txt 3.txt 4.txt 5.txt 6.txt; do cp "/mnt/c/Users/alien/SCRIPTORIUM🜇 0.1/$f" "/mnt/c/Users/alien/scriptorium-maestro/logs/origen/$f"; done find '/mnt/c/Users/alien/scriptorium-maestro/logs/origen' -maxdepth 1 -type f | sort
+
+
+Explorado(s) 1 lista
+Ya está levantado el repositorio maestro y el lote 1 importado. Voy a hacer una revisión corta de coherencia: qué entró, qué debería marcarse como legacy, y dejar un índice para que el repo no quede mudo en esta primera iteración.
+
+Explorado(s) 2 archivos,2 listas
+Terminal en segundo plano completado con git -C '/mnt/c/Users/alien/scriptorium-maestro' status --short --branch
+
+
+Encontré una contaminación que no conviene canonizar: dos experimentos importados contienen razonamiento interno o basura conversacional. Los voy a reclasificar como legacy y dejaré un índice mínimo para distinguir canon de archivo histórico.
+
+Terminal en segundo plano completado con mv '/mnt/c/Users/alien/scriptorium-maestro/canon/05_experimentos/experimento_01_final_publish.md' '/mnt/c/Users/alien/scriptorium-maestro/docs/legacy/experimento_01_final_publish.md' mv '/mnt/c/Users/alien/scriptorium-maestro/canon/05_experimentos/experimento_02_cibernetica_existencial.md' '/mnt/c/Users/alien/scriptorium-maestro/docs/legacy/experimento_02_cibernetica_existencial.md' find '/mnt/c/Users/alien/scriptorium-maestro/canon/05_experimentos' -maxdepth 1 -type f | sort printf '\n---\n' find '/mnt/c/Users/alien/scriptorium-maestro/docs/legacy' -maxdepth 1 -type f | sort
+
+
+Voy a dejar indexadas las tres zonas críticas: auditorías, memoria de origen y legacy. Así el repo maestro arranca con criterio de clasificación, no solo con carpetas vacías.
+
+diff --git a//mnt/c/Users/alien/scriptorium-maestro/canon/05_experimentos/README.md b//mnt/c/Users/alien/scriptorium-maestro/canon/05_experimentos/README.md
+new file mode 100644
+--- /dev/null
++++ b//mnt/c/Users/alien/scriptorium-maestro/canon/05_experimentos/README.md
+@@ -0,0 +1,15 @@
++# Experimentos Canónicos
++
++Este directorio sólo contiene experimentos que todavía pueden leerse como fuente editorial utilizable.
++
++## Criterios
++
++- sin razonamiento interno expuesto,
++- sin trazas conversacionales accidentales,
++- sin mezcla de output final con instrucciones auxiliares.
++
++## Material actual
++
++- `experimento_01_prompt_ritual.md`
++
++Los experimentos con contaminación conversacional o `<thinking_process>` fueron movidos a `docs/legacy/`.
+
+
+
+diff --git a//mnt/c/Users/alien/scriptorium-maestro/docs/auditorias/README.md b//mnt/c/Users/alien/scriptorium-maestro/docs/auditorias/README.md
+new file mode 100644
+--- /dev/null
++++ b//mnt/c/Users/alien/scriptorium-maestro/docs/auditorias/README.md
+@@ -0,0 +1,14 @@
++# Auditorías
++
++Este directorio concentra los documentos de gobierno técnico del proceso de consolidación.
++
++## Contenido
++
++- `AUDITORIA_SCRIPTORIUM_0_1.md`
++- `AUDITORIA_PUNTO_CERO.md`
++- `COMPARATIVA_PUNTO_CERO_VS_SCRIPTORIUM_0_1.md`
++- `MATRIZ_FUSION_SCRIPTORIUM.md`
++
++## Regla
++
++Antes de migrar un dominio nuevo al repositorio maestro, su decisión debe poder justificarse con al menos una de estas piezas.
+
+diff --git a//mnt/c/Users/alien/scriptorium-maestro/docs/legacy/README.md b//mnt/c/Users/alien/scriptorium-maestro/docs/legacy/README.md
+new file mode 100644
+--- /dev/null
++++ b//mnt/c/Users/alien/scriptorium-maestro/docs/legacy/README.md
+@@ -0,0 +1,19 @@
++# Legacy
++
++Este directorio contiene materiales valiosos pero no canónicos.
++
++Razones típicas para que algo viva aquí:
++
++- contiene razonamiento interno o trazas de conversación,
++- mezcla texto final con basura de ejecución,
++- requiere limpieza antes de entrar a `canon/`,
++- documenta una etapa histórica útil pero no estable.
++
++## Material actual
++
++- `experimento_01_final_publish.md`
++- `experimento_02_cibernetica_existencial.md`
++
++## Regla
++
++Nada en `docs/legacy/` puede consumirse automáticamente en producción sin normalización previa.
+
+
+diff --git a//mnt/c/Users/alien/scriptorium-maestro/logs/origen/README.md b//mnt/c/Users/alien/scriptorium-maestro/logs/origen/README.md
+new file mode 100644
+--- /dev/null
++++ b//mnt/c/Users/alien/scriptorium-maestro/logs/origen/README.md
+@@ -0,0 +1,11 @@
++# Memoria de Origen
++
++Los archivos `1.txt` a `6.txt` son la memoria histórica compartida entre los dos linajes auditados.
++
++Su función aquí es forense:
++
++- reconstruir decisiones,
++- rastrear cambios de arquitectura,
++- explicar de dónde salió cada bifurcación del proyecto.
++
++No son documentación operativa ni canon editorial.
+
+
+Ya quedó creado el repositorio maestro en [scriptorium-maestro](/mnt/c/Users/alien/scriptorium-maestro).
+
+Dejé la base estructural real:
+[README.md](/mnt/c/Users/alien/scriptorium-maestro/README.md), [.gitignore](/mnt/c/Users/alien/scriptorium-maestro/.gitignore), [.env.example](/mnt/c/Users/alien/scriptorium-maestro/.env.example), [ARQUITECTURA_REPO.md](/mnt/c/Users/alien/scriptorium-maestro/docs/ARQUITECTURA_REPO.md) y [MIGRACION_LOTE_1.md](/mnt/c/Users/alien/scriptorium-maestro/docs/MIGRACION_LOTE_1.md). También inicialicé git en `main`.
+
+Importé el lote 1 seguro:
+- canon editorial desde `SCRIPTORIUM🜇 0.1` a [canon/00_manifiesto](/mnt/c/Users/alien/scriptorium-maestro/canon/00_manifiesto), [canon/01_ontologia](/mnt/c/Users/alien/scriptorium-maestro/canon/01_ontologia), [canon/02_glosarios](/mnt/c/Users/alien/scriptorium-maestro/canon/02_glosarios) y [canon/03_prompts_base](/mnt/c/Users/alien/scriptorium-maestro/canon/03_prompts_base)
+- memoria histórica `1.txt` a `6.txt` en [logs/origen](/mnt/c/Users/alien/scriptorium-maestro/logs/origen)
+- auditorías y matriz en [docs/auditorias](/mnt/c/Users/alien/scriptorium-maestro/docs/auditorias)
+
+También limpié la clasificación: los experimentos contaminados con basura conversacional o `<thinking_process>` fueron movidos a [docs/legacy](/mnt/c/Users/alien/scriptorium-maestro/docs/legacy), y dejé sólo lo canónico en [canon/05_experimentos](/mnt/c/Users/alien/scriptorium-maestro/canon/05_experimentos).
+
+El siguiente paso lógico es el lote 2: migrar `core/`, `rituales/`, `exporters/` y `preexport/` desde `scriptorium-arcontico punto cero`, pero ya con refactor para unificar el contrato del parser antes de tocar el runner. Si quieres, sigo con eso ahora.
+
+Procede
+
+
+
+Procesado durante 5m 32s
+Avancé la compatibilidad del motor ARC en scriptorium-maestro y ya no sólo cubre steps, timeline simple y sequence, sino también variantes heredadas más ricas: clip { ... }, track video/texto/audio, escena, caption, layer, meta.audio, meta.duracion y referencias punteadas en assets/styles. Los cambios principales quedaron en arc_parser.js y index.js.
+
+También migré madonna_hibrida.arc y dejé nuevas pruebas reales en real_pipeline_madonna_track_check.mjs y reel_template_clip_check.mjs. Actualicé además las notas en README.md, README.md, MIGRACION_LOTE_3.md y MIGRACION_LOTE_4.md.
+
+Verificación hecha:
+
+Parser contract OK
+Runner smoke OK
+Real pipeline Madonna OK
+Real pipeline Kerigma OK
+Real pipeline Madonna Track OK
+Reel template clip OK
+Exports reales nuevos:
+
+MadonnaHibrida.capcut.json
+kerigma.capcut.json
+El siguiente paso útil ya es menos parser y más saneamiento del corpus: normalizar assets reales frente a rutas declaradas y decidir si el runner debe seguir mezclando duración explícita de timeline con meta.duracion, o si una debe prevalecer como regla fija.
+
+
+11 archivos modificados
++347
+-51
+Deshacer
+docs/MIGRACION_LOTE_3.md
+docs/MIGRACION_LOTE_4.md
+engine/parser/arc_parser.js
+engine/runner/index.js
+package.json
+pipelines/reels/kerigma_master/README.md
+pipelines/reels/kerigma_silencio_arconte/README.md
+pipelines/reels/madonna_hibrida/README.md
+tests/real_pipeline_kerigma_check.mjs
+tests/real_pipeline_madonna_track_check.mjs
+tests/reel_template_clip_check.mjs
+Ok, avante!
+
+
+
+Procesado durante 2m 57s
+Avancé la fase de assets y la dejé operativa, no sólo descrita. Añadí el auditor automático en audit_asset_references.mjs, la política provisional en assets/README.md, el reporte generado en AUDITORIA_ASSETS.md y el JSON de salida en asset_audit.json. También dejé esta fase documentada en MIGRACION_LOTE_5.md y actualicé README.md.
+
+El dato duro es este: el corpus actual declara 45 referencias únicas de assets/... y audio/...; sólo 5 existen en el origen técnico y 0 están migradas al repo maestro. Por eso no introduje aliases artificiales: hoy la deuda no es un simple problema de nombres, sino de ausencia real de binarios. El script ya deja eso repetible y verificable con audit:assets.
+
+Lo siguiente correcto ya no es tocar más parser. Es elegir una estrategia de hidratación de media:
+
+migrar primero el bloque mínimo realmente existente (assets/arconte/01-04.jpg y audio/silencio_arconte.wav)
+o definir un manifiesto canónico para reconstruir madonna y madonna_hibrida sin contaminar el historial con mappings inventados.
+
+5 archivos modificados
++271
+-2
+Deshacer
+README.md
+assets/README.md
+docs/MIGRACION_LOTE_5.md
+package.json
+tools/audit_asset_references.mjs
+Excelente, continua
+
+
+
+Procesado durante 3m 55s
+Seguí con la capa de media y ya quedó funcional en scriptorium-maestro. Añadí un manifiesto real de hidratación en hidratacion_inicial.json, la herramienta hydrate_media_from_source.mjs y copié al repo maestro los únicos binarios demostrables del origen técnico para este lote: 01.jpg, 02.jpg, 03.jpg, 04.jpg y silencio_arconte.wav.
+
+También dejé medición operativa, no sólo copia: audit_asset_references.mjs, report_pipeline_media_coverage.mjs, AUDITORIA_ASSETS.md, COBERTURA_MEDIA_PIPELINES.md y MIGRACION_LOTE_6.md. El estado actual quedó así: 45 referencias únicas auditadas, 5 presentes en el origen técnico y esas mismas 5 ya hidratadas en el repo maestro. La cobertura por .arc es ahora 6 totalmente cubiertos, 4 parciales y 5 sin media resuelta.
+
+Además endurecí el runner en index.js para que registre media presente y faltante por ejecución en lugar de aceptar refs rotas en silencio. Lo fijé con hydrated_media_check.mjs y media_validation_check.mjs. Verificación reciente:
+
+Hydrated media OK
+Media validation OK
+reel_template.arc: mediaPresent: 4, mediaMissing: 0
+madonna_hibrida.arc: mediaPresent: 0, mediaMissing: 10
+El siguiente paso correcto ya está claro por el reporte: o intentamos reconstruir evidencia para assets/arconte/00.jpg, audio/silencio_arconte_acto2.wav y arconte/05-12.jpg, o abrimos la fase de manifiestos canónicos para madonna/madonna_hibrida sin tocar todavía el runner.
+
+
+10 archivos modificados
++432
+-3
+Deshacer
+README.md
+assets/README.md
+assets/source/hidratacion_inicial.json
+docs/MIGRACION_LOTE_6.md
+engine/runner/index.js
+package.json
+tests/hydrated_media_check.mjs
+tests/media_validation_check.mjs
+tools/hydrate_media_from_source.mjs
+tools/report_pipeline_media_coverage.mjs
+Bien, procede
+
+
+
+Procesado durante 5m 40s
+Seguí y cerré una ronda más de hidratación con evidencia real en scriptorium-maestro. Detecté y corregí un bug en los auditores de media (audit_asset_references.mjs, report_pipeline_media_coverage.mjs) y amplié el manifiesto hidratacion_inicial.json para copiar el pack oficial madonna_hibrida_pack y, con evidencia documental, crear aliases de assets/madonna_hibrida/01.jpg a 04.jpg. Dejé esa justificación en EVIDENCIA_MEDIA_MADONNA_HIBRIDA.md y documenté el avance en MIGRACION_LOTE_7.md.
+
+También fijé esto con pruebas reales:
+
+capcut_pack_hydration_check.mjs
+madonna_acto2_media_check.mjs
+Estado actual:
+
+Auditoría de refs: AUDITORIA_ASSETS.md
+Cobertura por pipeline: COBERTURA_MEDIA_PIPELINES.md
+Números reales ahora:
+
+48 referencias únicas auditadas
+8 presentes en el origen técnico
+8 refs auditadas ya presentes en el repo maestro
+cobertura por .arc: 6 totalmente cubiertos, 5 parciales, 4 sin media resuelta
+Mejora concreta lograda:
+
+acto5.arc ya tiene su pack resuelto por evidencia
+madonna_hibrida_acto2.arc subió a 4/5; sólo falta audio/antes_del_silencio_cantos_de_ballena.wav
+El siguiente paso correcto ya está muy acotado: intentar reconstruir evidencia para audio/antes_del_silencio_cantos_de_ballena.wav, audio/transfiguracion.wav, audio/ascension.wav y assets/madonna_hibrida/05-12.jpg, o declarar formalmente que no existen en el linaje fuente y dejar esos actos como parciales por diseño.
+
+
+11 archivos modificados
++198
+-5
+Deshacer
+README.md
+assets/README.md
+assets/source/hidratacion_inicial.json
+docs/EVIDENCIA_MEDIA_MADONNA_HIBRIDA.md
+docs/MIGRACION_LOTE_7.md
+engine/runner/index.js
+package.json
+tests/capcut_pack_hydration_check.mjs
+tests/madonna_acto2_media_check.mjs
+tools/audit_asset_references.mjs
+tools/report_pipeline_media_coverage.mjs
+Venga, procede
+
+
+
+Procesado durante 4m 34s
+Quedó cerrada la fase de registro de faltantes en scriptorium-maestro. Endurecí build_missing_media_registry.mjs para que recalcule la existencia real en disco y no dependa de un asset_audit.json viejo, y además dejé package.json para que report:missing-media refresque primero la auditoría de assets.
+
+El estado consolidado ya quedó documentado en README.md, MIGRACION_LOTE_8.md y REGISTRO_MEDIA_FALTANTE.md. Números finales: 48 refs auditadas, 12 presentes en maestro y 36 todavía ausentes; las 36 tienen respaldo textual en 1.txt..6.txt, pero no soporte material verificable en el linaje fuente. También quedaron regeneradas AUDITORIA_ASSETS.md y missing_media_registry.json.
+
+Verificación: npm run report:missing-media pasa y devuelve totalMissingInMaster: 36, declaredOnlyInTextCorpus: 36, noMaterialEvidence: 0.
+
+El siguiente paso útil ya es de política, no de parser: definir un manifiesto canónico de placeholder vs media final para madonna, madonna_hibrida y arconte, o bien empezar una reconstrucción controlada de esos faltantes desde evidencia externa.
+
+
+4 archivos modificados
++214
+-2
+Deshacer
+README.md
+docs/MIGRACION_LOTE_8.md
+package.json
+tools/build_missing_media_registry.mjs
+Entiendo, tú dale con todo!
+
+
+
+Procesado durante 5m 9s
+Ya quedó montado el Lote 9 en scriptorium-maestro. La pieza central es el manifiesto media_canon.json, que separa por fin tres estados operativos: evidence_hydrated, placeholder_missing y declared_missing_final. Lo conecté al runtime en catalog.js y index.js, así que el runner ya no trata todas las ausencias como el mismo problema.
+
+También dejé la capa documental y verificable: MANIFIESTO_MEDIA_CANONICA.md, MIGRACION_LOTE_9.md, README.md, assets/README.md, el generador report_media_canon.mjs y sus pruebas en media_catalog_check.mjs, media_validation_check.mjs y madonna_acto2_media_check.mjs.
+
+Estado consolidado:
+
+48 entradas catalogadas
+12 evidence_hydrated
+5 placeholder_missing
+31 declared_missing_final
+Verificación:
+
+npm run report:media-canon
+npm run test:media-catalog
+npm run test:media-validation
+npm run test:madonna-acto2-media
+npm run test:runner
+Confirmación de comportamiento real:
+
+madonna_hibrida_template.arc: mediaPlaceholder: 5
+madonna_hibrida.arc: mediaDeclaredMissing: 10
+El siguiente paso fuerte ya no es clasificación sino sustitución controlada: puedo abrir Lote 10 para definir un sistema de placeholders explícitos reutilizables y un manifiesto de reemplazo cuando aparezca media final real.
+
+
+11 archivos modificados
++390
+-27
+Deshacer
+README.md
+assets/README.md
+assets/source/media_canon.json
+docs/MIGRACION_LOTE_9.md
+engine/media/catalog.js
+engine/runner/index.js
+package.json
+tests/madonna_acto2_media_check.mjs
+tests/media_catalog_check.mjs
+tests/media_validation_check.mjs
+tools/report_media_canon.mjs
+Dale fuego! 
+
+
+
+
+Procesado durante 4m 56s
+Ya quedó encendido también el Lote 10 y 11 en scriptorium-maestro.
+
+Primero formalicé el plano de reemplazo con media_replacements.json, replacements.js y el reporte MANIFIESTO_REEMPLAZO_PLACEHOLDERS.md. El runner en index.js ya expone replacementHints, así que un placeholder no queda sólo como “faltante”: ahora sale con slot, patrones admitidos y previewCandidate cuando existe.
+
+Después volví eso accionable con materialize_placeholder_preview.mjs. Ya genera un preview derivado no destructivo en madonna_hibrida_template.preview.arc y deja trazabilidad en madonna_hibrida_template.preview.report.json. Ese preview reemplaza 4 placeholders visuales por media real existente y deja 1 placeholder de audio aún sin resolver.
+
+Verificación hecha:
+
+npm run report:media-replacements
+npm run test:media-replacements
+npm run test:media-catalog
+npm run test:placeholder-preview
+Resultado práctico: madonna_hibrida_template.arc ya no es sólo una plantilla abstracta; tiene una derivación ejecutable parcial para iteración rápida, sin contaminar la hidratación final. El siguiente paso fuerte es obvio: atacar audio_main con un perfil de preview o empezar la sustitución controlada de declared_missing_final por media real cuando aparezca.
+
+
+13 archivos modificados
++597
+-5
+Deshacer
+README.md
+assets/README.md
+assets/source/media_replacements.json
+docs/MIGRACION_LOTE_10.md
+docs/MIGRACION_LOTE_11.md
+engine/media/replacements.js
+engine/runner/index.js
+package.json
+tests/media_catalog_check.mjs
+tests/media_replacement_check.mjs
+tests/placeholder_preview_materialization_check.mjs
+tools/materialize_placeholder_preview.mjs
+tools/report_media_replacements.mjs
+
+

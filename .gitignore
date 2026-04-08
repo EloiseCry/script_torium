@@ -16,13 +16,19 @@ venv/
 node_modules/
 npm-debug.log*
 
-# Runtime
-runtime/cache/**
-runtime/outputs/**
-runtime/temp/**
+# Runtime (outputs are never source of truth)
+runtime/**
+!runtime/
+!runtime/cache/
 !runtime/cache/.gitkeep
+!runtime/outputs/
 !runtime/outputs/.gitkeep
+!runtime/temp/
 !runtime/temp/.gitkeep
+!runtime/previews/
+!runtime/previews/.gitkeep
+!runtime/orchestrator/
+!runtime/orchestrator/.gitkeep
 
 # OS / editors
 .DS_Store

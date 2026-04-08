@@ -1,0 +1,20 @@
+{
+  "universo": "madonna_hibrida",
+  "modo": "produccion_limitada",
+  "objetivo_activo": "generar_pack_preview",
+  "template_actual": "madonna_hibrida_template",
+  "template_path": "pipelines/reels/madonna_hibrida/madonna_hibrida_template.arc",
+  "estado_media": {
+    "presente": 5,
+    "faltante": 0,
+    "placeholder": 0,
+    "replacementHints": 0
+  },
+  "ciclope": {
+    "capas_pendientes": [],
+    "bloqueante": false
+  },
+  "saturacion": 0.62,
+  "timestamp_ultimo_lote": "2026-04-08",
+  "proximo_paso_sugerido": "generar_pack_preview"
+}

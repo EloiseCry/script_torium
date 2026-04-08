@@ -11,7 +11,7 @@
     "report:missing-media": "npm run audit:assets && node tools/build_missing_media_registry.mjs",
     "report:media-canon": "node tools/report_media_canon.mjs",
     "report:media-replacements": "node tools/report_media_replacements.mjs",
-    "materialize:placeholder-preview": "node tools/materialize_placeholder_preview.mjs pipelines/reels/madonna_hibrida/madonna_hibrida_template.arc",
+    "materialize:placeholder-preview": "node tools/materialize_placeholder_preview.mjs",
     "test:parser": "node tests/parser_contract_check.mjs",
     "test:runner": "node tests/runner_smoke_check.mjs",
     "test:pipelines": "node tests/real_pipeline_madonna_check.mjs",
@@ -26,6 +26,7 @@
     "test:capcut-pack": "node tests/capcut_pack_hydration_check.mjs",
     "test:madonna-acto2-media": "node tests/madonna_acto2_media_check.mjs",
     "run:arc": "node engine/runner/index.js",
-    "orchestrate": "node engine/orchestrator/orchestrator.js"
+    "orchestrate": "node engine/orchestrator/orchestrator.js",
+    "test:orchestrator": "node tests/orchestrator_decision_check.mjs"
   }
 }

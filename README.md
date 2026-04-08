@@ -12,6 +12,7 @@ El repositorio se organiza por dominios:
 - `canon/`: verdad editorial y semántica.
 - `arc/`: módulos fuente del lenguaje ARC.
 - `engine/`: parser, runner, acciones y exportadores.
+- `engine/orchestrator/`: capa de decision que coordina ejecucion, estado y prioridad operativa.
 - `integrations/`: puentes con LLM, Notion y publicación.
 - `pipelines/`: fuentes de ejecución.
 - `assets/`: material fuente y paquetes pesados.
@@ -118,6 +119,15 @@ Lote 12 migrado:
 - generación sintética de audio preview en `runtime/previews/media/`
 - la plantilla `madonna_hibrida_template.arc` ya genera un preview completo `5/5`
 
+
+Lote 13 migrado:
+
+- estado del orchestrator movido de `engine/` a `runtime/orchestrator/` (bootstrap desde `engine/orchestrator/state.seed.json`)
+- orchestrator sin autoejecucion por import y con decision testable (`evaluateMode`, `decideNextStep`)
+- resolucion de template sin hardcode (usa `template_path`/`template_actual` del estado)
+- prueba nueva `tests/orchestrator_decision_check.mjs`
+- CI minima en `.github/workflows/test.yml` + `dependabot.yml`
+- hardening de `.gitignore` para blindar `runtime/**` y evitar contaminar fuente de verdad
 Pendiente:
 
 - hidratación real de media aún ausente:
@@ -130,3 +140,6 @@ Pendiente:
 - automatizar sustitución de placeholders cuando aparezca media final real
 - integración LLM/Notion/publicación
 - política final para assets y binarios pesados
+
+
+
