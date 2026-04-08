@@ -155,8 +155,3 @@ Pendiente:
 - automatizar sustitución de placeholders cuando aparezca media final real
 - integración LLM/Notion/publicación
 - política final para assets y binarios pesados
-
-
-
-
-
