@@ -1,0 +1,8 @@
+# Owner global del repositorio
+* @KhaosLiminal
+
+# Zonas criticas
+/.github/* @KhaosLiminal
+/engine/orchestrator/* @KhaosLiminal
+/docs/auditorias/* @KhaosLiminal
+/runtime/** @KhaosLiminal

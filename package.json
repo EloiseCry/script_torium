@@ -27,6 +27,7 @@
     "test:madonna-acto2-media": "node tests/madonna_acto2_media_check.mjs",
     "run:arc": "node engine/runner/index.js",
     "orchestrate": "node engine/orchestrator/orchestrator.js",
-    "test:orchestrator": "node tests/orchestrator_decision_check.mjs"
+    "test:orchestrator": "node tests/orchestrator_decision_check.mjs",
+    "health:check": "npm run test:parser && npm run test:runner && npm run test:orchestrator && npm run test:media-replacements && npm run test:placeholder-preview"
   }
 }

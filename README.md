@@ -128,6 +128,14 @@ Lote 13 migrado:
 - prueba nueva `tests/orchestrator_decision_check.mjs`
 - CI minima en `.github/workflows/test.yml` + `dependabot.yml`
 - hardening de `.gitignore` para blindar `runtime/**` y evitar contaminar fuente de verdad
+
+Lote 14 migrado:
+
+- gobernanza de publicacion en `.github/CODEOWNERS`
+- template de PR con checklist de coherencia en `.github/pull_request_template.md`
+- politica base de seguridad en `SECURITY.md`
+- guia operativa de branch protection en `docs/GOBERNANZA_PUBLICACION_2026-04-08.md`
+- comando `npm run health:check` para gate local de publicacion
 Pendiente:
 
 - hidratación real de media aún ausente:
@@ -140,6 +148,7 @@ Pendiente:
 - automatizar sustitución de placeholders cuando aparezca media final real
 - integración LLM/Notion/publicación
 - política final para assets y binarios pesados
+
 
 
 
