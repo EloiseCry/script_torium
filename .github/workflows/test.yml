@@ -15,9 +15,11 @@ jobs:
         with:
           node-version: '20'
       - run: npm install
+      - run: npm run test:runtime-guard
       - run: npm run test:parser
       - run: npm run test:runner
       - run: npm run test:media-replacements
       - run: npm run test:placeholder-preview
       - run: npm run test:orchestrator
+
 

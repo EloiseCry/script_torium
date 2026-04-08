@@ -136,6 +136,13 @@ Lote 14 migrado:
 - politica base de seguridad en `SECURITY.md`
 - guia operativa de branch protection en `docs/GOBERNANZA_PUBLICACION_2026-04-08.md`
 - comando `npm run health:check` para gate local de publicacion
+
+Lote 15 migrado:
+
+- guard automatico de runtime en `tools/runtime_guard_check.mjs`
+- nuevo test `test:runtime-guard`
+- `health:check` endurecido para exigir guard + pruebas criticas
+- workflow CI actualizado para fallar si se versiona output efimero en `runtime/`
 Pendiente:
 
 - hidratación real de media aún ausente:
@@ -148,6 +155,7 @@ Pendiente:
 - automatizar sustitución de placeholders cuando aparezca media final real
 - integración LLM/Notion/publicación
 - política final para assets y binarios pesados
+
 
 
 
