@@ -7,6 +7,7 @@
 - `orchestrator.js`: logica de decision y ejecucion de acciones.
 - `observer.js`: actualiza estado operativo desde eventos externos.
 - `decision_table.json`: reglas de modo.
+- `state_schema.js`: validacion minima del estado (`modo`, `ciclope`, `estado_media`).
 - `state.seed.json`: snapshot canonic para bootstrap.
 - `state_store.js`: acceso unificado al estado runtime.
 
@@ -16,6 +17,7 @@
 - `runtime/` guarda estado mutable y efectos.
 
 Por eso el estado vivo se guarda en `runtime/orchestrator/state.json`.
+La memoria historica se registra en `runtime/orchestrator/history.log`.
 
 ## Flujo permitido
 
@@ -36,6 +38,19 @@ El observer no decide acciones; solo registra hechos.
 ## Estado minimo esperado
 
 - `template_actual` o `template_path`
+- `modo` (string no vacio)
 - `estado_media` (`presente`, `faltante`)
 - `ciclope.capas_pendientes`
 - `saturacion`
+
+## Decision Engine 2.0
+
+`decideNextStep` devuelve un objeto declarativo:
+
+```json
+{
+  "actions": ["generar_pack_preview"],
+  "priority": "media_ready",
+  "reasoning": "no faltante + ciclope con capas pendientes"
+}
+```

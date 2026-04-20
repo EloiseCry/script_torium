@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import {
   PROJECT_ROOT,
   DECISION_PATH,
+  appendHistoryEntry,
   loadJson,
   loadState,
   saveState
@@ -64,18 +65,34 @@ export function evaluateMode(state, rules) {
 
 export function decideNextStep(state) {
   if ((state?.estado_media?.faltante ?? 0) > 0) {
-    return "resolver_media";
+    return {
+      actions: ["resolver_media"],
+      priority: "media_missing",
+      reasoning: "faltante > 0"
+    };
   }
 
   if ((state?.ciclope?.capas_pendientes ?? []).length > 0) {
-    return "generar_pack_preview";
+    return {
+      actions: ["generar_pack_preview"],
+      priority: "media_ready",
+      reasoning: "no faltante + ciclope con capas pendientes"
+    };
   }
 
   if ((state?.saturacion ?? 0) > 0.7) {
-    return "expandir_templates";
+    return {
+      actions: ["expandir_templates"],
+      priority: "saturation_high",
+      reasoning: "saturacion > 0.7"
+    };
   }
 
-  return "generar_pack_preview";
+  return {
+    actions: ["generar_pack_preview"],
+    priority: "steady_flow",
+    reasoning: "flujo estable: continuar pack preview"
+  };
 }
 
 function runRunner(templatePath) {
@@ -87,14 +104,29 @@ function runRunner(templatePath) {
 }
 
 function runHydrateMedia() {
-  const npmCmd = process.platform === "win32" ? "npm.cmd" : "npm";
-  execFileSync(npmCmd, ["run", "hydrate:media"], {
+  if (process.platform === "win32") {
+    execFileSync("cmd.exe", ["/d", "/s", "/c", "npm run hydrate:media"], {
+      stdio: "inherit",
+      cwd: PROJECT_ROOT
+    });
+    return;
+  }
+
+  execFileSync("npm", ["run", "hydrate:media"], {
     stdio: "inherit",
     cwd: PROJECT_ROOT
   });
 }
 
-function executeAction(nextStep, state) {
+function getPrimaryAction(decision) {
+  if (!Array.isArray(decision?.actions) || decision.actions.length === 0) {
+    return null;
+  }
+  return decision.actions[0];
+}
+
+function executeAction(decision, state) {
+  const nextStep = getPrimaryAction(decision);
   try {
     if (nextStep === "generar_pack_preview") {
       const templatePath = resolveTemplatePath(state, PROJECT_ROOT);
@@ -126,23 +158,34 @@ export function runOrchestrator() {
   const rules = loadJson(DECISION_PATH);
 
   const newMode = evaluateMode(state, rules);
-  const nextStep = decideNextStep(state);
+  const decision = decideNextStep(state);
+  const nextStep = getPrimaryAction(decision);
+  const timestamp = new Date().toISOString();
 
   const updatedState = {
     ...state,
     modo: newMode,
     proximo_paso_sugerido: nextStep,
-    timestamp_orchestrator: new Date().toISOString()
+    decision_actual: decision,
+    timestamp_orchestrator: timestamp
   };
 
   saveState(updatedState);
+  appendHistoryEntry({
+    timestamp,
+    source: "orchestrator",
+    decision,
+    state_snapshot: updatedState
+  });
 
   console.log("ORCHESTRATOR DECISION");
   console.log("---------------------");
   console.log("Modo:", newMode);
-  console.log("Siguiente paso:", nextStep);
+  console.log("Siguiente paso:", nextStep ?? "sin_accion");
+  console.log("Prioridad:", decision.priority);
+  console.log("Razon:", decision.reasoning);
 
-  executeAction(nextStep, updatedState);
+  executeAction(decision, updatedState);
 
   return updatedState;
 }

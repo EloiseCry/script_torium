@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { validateState } from "./state_schema.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -20,6 +21,7 @@ function findProjectRoot(startPath = __dirname) {
 
 export const PROJECT_ROOT = findProjectRoot(__dirname);
 export const STATE_PATH = path.join(PROJECT_ROOT, "runtime", "orchestrator", "state.json");
+export const HISTORY_LOG_PATH = path.join(PROJECT_ROOT, "runtime", "orchestrator", "history.log");
 export const STATE_SEED_PATH = path.join(PROJECT_ROOT, "engine", "orchestrator", "state.seed.json");
 export const DECISION_PATH = path.join(PROJECT_ROOT, "engine", "orchestrator", "decision_table.json");
 
@@ -49,9 +51,15 @@ export function saveJson(filePath, data) {
 
 export function loadState() {
   const runtimeStatePath = ensureRuntimeState();
-  return loadJson(runtimeStatePath);
+  return validateState(loadJson(runtimeStatePath));
 }
 
 export function saveState(state) {
+  validateState(state);
   saveJson(STATE_PATH, state);
+}
+
+export function appendHistoryEntry(entry) {
+  fs.mkdirSync(path.dirname(HISTORY_LOG_PATH), { recursive: true });
+  fs.appendFileSync(HISTORY_LOG_PATH, `${JSON.stringify(entry)}\n`, "utf8");
 }

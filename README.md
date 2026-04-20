@@ -143,6 +143,13 @@ Lote 15 migrado:
 - nuevo test `test:runtime-guard`
 - `health:check` endurecido para exigir guard + pruebas criticas
 - workflow CI actualizado para fallar si se versiona output efimero en `runtime/`
+
+Lote 16 migrado:
+
+- validacion de estado en `engine/orchestrator/state_schema.js` (falla rapido ante estado invalido)
+- Decision Engine 2.0: `decideNextStep` ahora devuelve `actions`, `priority`, `reasoning`
+- memoria historica en `runtime/orchestrator/history.log` para decisiones y eventos de observer
+
 Pendiente:
 
 - hidratación real de media aún ausente:
