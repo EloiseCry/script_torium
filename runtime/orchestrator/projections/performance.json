@@ -1,0 +1,28 @@
+{
+  "generated_at": "2026-04-26T09:44:53.508Z",
+  "runs": [
+    {
+      "correlation_id": "cc9cfbd5-f10e-45a7-99cc-4cf21b548661",
+      "action": "resolver_media",
+      "started_at": "2026-04-20T11:20:36.281Z",
+      "finished_at": "2026-04-20T11:20:36.769Z",
+      "status": "completed",
+      "duration_ms": 488
+    },
+    {
+      "correlation_id": "d78b5ab2-801e-491d-82f5-1813aec97e54",
+      "action": "resolver_media",
+      "started_at": "2026-04-25T15:02:36.989Z",
+      "finished_at": "2026-04-25T15:02:37.600Z",
+      "status": "completed",
+      "duration_ms": 611
+    }
+  ],
+  "summary": {
+    "total_runs": 2,
+    "completed": 2,
+    "failed": 0,
+    "avg_duration_ms": 549.5,
+    "p95_duration_ms": 611
+  }
+}

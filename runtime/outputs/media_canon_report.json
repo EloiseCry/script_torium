@@ -1,0 +1,380 @@
+{
+  "generatedAt": "2026-04-02T21:42:46.070Z",
+  "manifestPath": "C:\\Users\\alien\\scriptorium-maestro\\assets\\source\\media_canon.json",
+  "version": 1,
+  "summary": {
+    "totalEntries": 48,
+    "states": {
+      "evidence_hydrated": 12,
+      "declared_missing_final": 31,
+      "placeholder_missing": 5
+    },
+    "families": {
+      "arconte": {
+        "total": 15,
+        "byState": {
+          "evidence_hydrated": 5,
+          "declared_missing_final": 10
+        }
+      },
+      "madonna_hibrida": {
+        "total": 20,
+        "byState": {
+          "evidence_hydrated": 4,
+          "placeholder_missing": 5,
+          "declared_missing_final": 11
+        }
+      },
+      "madonna": {
+        "total": 10,
+        "byState": {
+          "declared_missing_final": 10
+        }
+      },
+      "madonna_hibrida_pack": {
+        "total": 3,
+        "byState": {
+          "evidence_hydrated": 3
+        }
+      }
+    }
+  },
+  "entries": [
+    {
+      "ref": "assets/arconte/01.jpg",
+      "family": "arconte",
+      "state": "evidence_hydrated",
+      "role": "frame",
+      "evidence": "source_tree"
+    },
+    {
+      "ref": "assets/arconte/02.jpg",
+      "family": "arconte",
+      "state": "evidence_hydrated",
+      "role": "frame",
+      "evidence": "source_tree"
+    },
+    {
+      "ref": "assets/arconte/03.jpg",
+      "family": "arconte",
+      "state": "evidence_hydrated",
+      "role": "frame",
+      "evidence": "source_tree"
+    },
+    {
+      "ref": "assets/arconte/04.jpg",
+      "family": "arconte",
+      "state": "evidence_hydrated",
+      "role": "frame",
+      "evidence": "source_tree"
+    },
+    {
+      "ref": "assets/arconte/00.jpg",
+      "family": "arconte",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/arconte/05.jpg",
+      "family": "arconte",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/arconte/06.jpg",
+      "family": "arconte",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/arconte/07.jpg",
+      "family": "arconte",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/arconte/08.jpg",
+      "family": "arconte",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/arconte/09.jpg",
+      "family": "arconte",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/arconte/10.jpg",
+      "family": "arconte",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/arconte/11.jpg",
+      "family": "arconte",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/arconte/12.jpg",
+      "family": "arconte",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/01.jpg",
+      "family": "madonna_hibrida",
+      "state": "evidence_hydrated",
+      "role": "frame",
+      "evidence": "official_pack_alias"
+    },
+    {
+      "ref": "assets/madonna_hibrida/02.jpg",
+      "family": "madonna_hibrida",
+      "state": "evidence_hydrated",
+      "role": "frame",
+      "evidence": "official_pack_alias"
+    },
+    {
+      "ref": "assets/madonna_hibrida/03.jpg",
+      "family": "madonna_hibrida",
+      "state": "evidence_hydrated",
+      "role": "frame",
+      "evidence": "official_pack_alias"
+    },
+    {
+      "ref": "assets/madonna_hibrida/04.jpg",
+      "family": "madonna_hibrida",
+      "state": "evidence_hydrated",
+      "role": "frame",
+      "evidence": "official_pack_alias"
+    },
+    {
+      "ref": "assets/madonna_hibrida/__01.jpg",
+      "family": "madonna_hibrida",
+      "state": "placeholder_missing",
+      "role": "template_frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/__02.jpg",
+      "family": "madonna_hibrida",
+      "state": "placeholder_missing",
+      "role": "template_frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/__03.jpg",
+      "family": "madonna_hibrida",
+      "state": "placeholder_missing",
+      "role": "template_frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/__04.jpg",
+      "family": "madonna_hibrida",
+      "state": "placeholder_missing",
+      "role": "template_frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/05.jpg",
+      "family": "madonna_hibrida",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/06.jpg",
+      "family": "madonna_hibrida",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/07.jpg",
+      "family": "madonna_hibrida",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/08.jpg",
+      "family": "madonna_hibrida",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/09.jpg",
+      "family": "madonna_hibrida",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/10.jpg",
+      "family": "madonna_hibrida",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/11.jpg",
+      "family": "madonna_hibrida",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/12.jpg",
+      "family": "madonna_hibrida",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna/frame_01.jpg",
+      "family": "madonna",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna/frame_02.jpg",
+      "family": "madonna",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna/frame_03.jpg",
+      "family": "madonna",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna/frame_04.jpg",
+      "family": "madonna",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna/frame_05.jpg",
+      "family": "madonna",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna/frame_06.jpg",
+      "family": "madonna",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna/frame_07.jpg",
+      "family": "madonna",
+      "state": "declared_missing_final",
+      "role": "frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "assets/madonna/final_frame.jpg",
+      "family": "madonna",
+      "state": "declared_missing_final",
+      "role": "final_frame",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "audio/silencio_arconte.wav",
+      "family": "arconte",
+      "state": "evidence_hydrated",
+      "role": "audio",
+      "evidence": "source_tree"
+    },
+    {
+      "ref": "audio/silencio_arconte_acto2.wav",
+      "family": "arconte",
+      "state": "declared_missing_final",
+      "role": "audio",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "audio/__track.wav",
+      "family": "madonna_hibrida",
+      "state": "placeholder_missing",
+      "role": "template_audio",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "audio/antes_del_silencio_cantos_de_ballena.wav",
+      "family": "madonna_hibrida",
+      "state": "declared_missing_final",
+      "role": "audio",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "audio/transfiguracion.wav",
+      "family": "madonna_hibrida",
+      "state": "declared_missing_final",
+      "role": "audio",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "audio/ascension.wav",
+      "family": "madonna_hibrida",
+      "state": "declared_missing_final",
+      "role": "audio",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "audio/score_madonna_hibrida.wav",
+      "family": "madonna",
+      "state": "declared_missing_final",
+      "role": "score",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "audio/vo_madonna_hibrida.wav",
+      "family": "madonna",
+      "state": "declared_missing_final",
+      "role": "voiceover",
+      "evidence": "text_corpus"
+    },
+    {
+      "ref": "pipelines/capcut_pack/madonna_hibrida_pack/assets/01.jpg",
+      "family": "madonna_hibrida_pack",
+      "state": "evidence_hydrated",
+      "role": "pack_asset",
+      "evidence": "official_pack"
+    },
+    {
+      "ref": "pipelines/capcut_pack/madonna_hibrida_pack/assets/02.jpg",
+      "family": "madonna_hibrida_pack",
+      "state": "evidence_hydrated",
+      "role": "pack_asset",
+      "evidence": "official_pack"
+    },
+    {
+      "ref": "pipelines/capcut_pack/madonna_hibrida_pack/assets/03.jpg",
+      "family": "madonna_hibrida_pack",
+      "state": "evidence_hydrated",
+      "role": "pack_asset",
+      "evidence": "official_pack"
+    }
+  ]
+}

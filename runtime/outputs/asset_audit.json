@@ -1,0 +1,483 @@
+{
+  "generatedAt": "2026-04-02T19:38:35.541Z",
+  "sourceRoot": "C:\\Users\\alien\\scriptorium-arcontico punto cero",
+  "summary": {
+    "totalReferences": 48,
+    "presentInSource": 8,
+    "missingInSource": 40,
+    "presentInMaster": 12,
+    "missingInMaster": 36,
+    "categories": {
+      "arconte": {
+        "total": 13,
+        "presentInSource": 4,
+        "missingInSource": 9
+      },
+      "madonna_hibrida": {
+        "total": 16,
+        "presentInSource": 0,
+        "missingInSource": 16
+      },
+      "madonna": {
+        "total": 8,
+        "presentInSource": 0,
+        "missingInSource": 8
+      },
+      "audio": {
+        "total": 8,
+        "presentInSource": 1,
+        "missingInSource": 7
+      },
+      "capcut_pack": {
+        "total": 3,
+        "presentInSource": 3,
+        "missingInSource": 0
+      }
+    }
+  },
+  "entries": [
+    {
+      "ref": "assets/arconte/00.jpg",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto0.arc"
+      ],
+      "category": "arconte",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/arconte/01.jpg",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto0.arc",
+        "pipelines/reels/kerigma_master/acto2.arc",
+        "pipelines/reels/kerigma_silencio_arconte/reel_template.arc"
+      ],
+      "category": "arconte",
+      "existsInMaster": true,
+      "existsInSource": true
+    },
+    {
+      "ref": "assets/arconte/02.jpg",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto0.arc",
+        "pipelines/reels/kerigma_master/acto2.arc",
+        "pipelines/reels/kerigma_silencio_arconte/reel_template.arc"
+      ],
+      "category": "arconte",
+      "existsInMaster": true,
+      "existsInSource": true
+    },
+    {
+      "ref": "assets/arconte/03.jpg",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto0.arc",
+        "pipelines/reels/kerigma_master/acto2.arc",
+        "pipelines/reels/kerigma_silencio_arconte/reel_template.arc"
+      ],
+      "category": "arconte",
+      "existsInMaster": true,
+      "existsInSource": true
+    },
+    {
+      "ref": "assets/arconte/04.jpg",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto2.arc",
+        "pipelines/reels/kerigma_silencio_arconte/reel_template.arc"
+      ],
+      "category": "arconte",
+      "existsInMaster": true,
+      "existsInSource": true
+    },
+    {
+      "ref": "assets/arconte/05.jpg",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto3.arc"
+      ],
+      "category": "arconte",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/arconte/06.jpg",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto3.arc"
+      ],
+      "category": "arconte",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/arconte/07.jpg",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto3.arc"
+      ],
+      "category": "arconte",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/arconte/08.jpg",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto3.arc"
+      ],
+      "category": "arconte",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/arconte/09.jpg",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto4.arc"
+      ],
+      "category": "arconte",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/arconte/10.jpg",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto4.arc"
+      ],
+      "category": "arconte",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/arconte/11.jpg",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto4.arc"
+      ],
+      "category": "arconte",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/arconte/12.jpg",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto4.arc"
+      ],
+      "category": "arconte",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna_hibrida/__01.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_template.arc"
+      ],
+      "category": "madonna_hibrida",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna_hibrida/__02.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_template.arc"
+      ],
+      "category": "madonna_hibrida",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna_hibrida/__03.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_template.arc"
+      ],
+      "category": "madonna_hibrida",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna_hibrida/__04.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_template.arc"
+      ],
+      "category": "madonna_hibrida",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna_hibrida/01.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto2.arc"
+      ],
+      "category": "madonna_hibrida",
+      "existsInMaster": true,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna_hibrida/02.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto2.arc"
+      ],
+      "category": "madonna_hibrida",
+      "existsInMaster": true,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna_hibrida/03.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto2.arc"
+      ],
+      "category": "madonna_hibrida",
+      "existsInMaster": true,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna_hibrida/04.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto2.arc"
+      ],
+      "category": "madonna_hibrida",
+      "existsInMaster": true,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna_hibrida/05.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto3.arc"
+      ],
+      "category": "madonna_hibrida",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna_hibrida/06.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto3.arc"
+      ],
+      "category": "madonna_hibrida",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna_hibrida/07.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto3.arc"
+      ],
+      "category": "madonna_hibrida",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna_hibrida/08.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto3.arc"
+      ],
+      "category": "madonna_hibrida",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna_hibrida/09.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto4.arc"
+      ],
+      "category": "madonna_hibrida",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna_hibrida/10.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto4.arc"
+      ],
+      "category": "madonna_hibrida",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna_hibrida/11.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto4.arc"
+      ],
+      "category": "madonna_hibrida",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna_hibrida/12.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto4.arc"
+      ],
+      "category": "madonna_hibrida",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna/final_frame.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "category": "madonna",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna/frame_01.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "category": "madonna",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna/frame_02.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "category": "madonna",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna/frame_03.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "category": "madonna",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna/frame_04.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "category": "madonna",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna/frame_05.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "category": "madonna",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna/frame_06.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "category": "madonna",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "assets/madonna/frame_07.jpg",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "category": "madonna",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "audio/__track.wav",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_template.arc"
+      ],
+      "category": "audio",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "audio/antes_del_silencio_cantos_de_ballena.wav",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto2.arc"
+      ],
+      "category": "audio",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "audio/ascension.wav",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto4.arc"
+      ],
+      "category": "audio",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "audio/score_madonna_hibrida.wav",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "category": "audio",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "audio/silencio_arconte_acto2.wav",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto2.arc"
+      ],
+      "category": "audio",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "audio/silencio_arconte.wav",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto0.arc",
+        "pipelines/reels/kerigma_master/acto3.arc",
+        "pipelines/reels/kerigma_master/acto4.arc",
+        "pipelines/reels/kerigma_silencio_arconte/manifest.json",
+        "pipelines/reels/kerigma_silencio_arconte/reel_template.arc"
+      ],
+      "category": "audio",
+      "existsInMaster": true,
+      "existsInSource": true
+    },
+    {
+      "ref": "audio/transfiguracion.wav",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto3.arc"
+      ],
+      "category": "audio",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "audio/vo_madonna_hibrida.wav",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "category": "audio",
+      "existsInMaster": false,
+      "existsInSource": false
+    },
+    {
+      "ref": "pipelines/capcut_pack/madonna_hibrida_pack/assets/01.jpg",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto5.arc"
+      ],
+      "category": "capcut_pack",
+      "existsInMaster": true,
+      "existsInSource": true
+    },
+    {
+      "ref": "pipelines/capcut_pack/madonna_hibrida_pack/assets/02.jpg",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto5.arc"
+      ],
+      "category": "capcut_pack",
+      "existsInMaster": true,
+      "existsInSource": true
+    },
+    {
+      "ref": "pipelines/capcut_pack/madonna_hibrida_pack/assets/03.jpg",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto5.arc"
+      ],
+      "category": "capcut_pack",
+      "existsInMaster": true,
+      "existsInSource": true
+    }
+  ]
+}

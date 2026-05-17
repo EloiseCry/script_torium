@@ -1,0 +1,1096 @@
+{
+  "generatedAt": "2026-04-02T19:38:35.854Z",
+  "summary": {
+    "totalMissingInMaster": 36,
+    "declaredOnlyInTextCorpus": 36,
+    "noMaterialEvidence": 0
+  },
+  "items": [
+    {
+      "ref": "assets/arconte/00.jpg",
+      "category": "arconte",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto0.arc"
+      ],
+      "mentionCount": 1,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 15245,
+          "snippet": "img1 = \"assets/arconte/00.jpg\""
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/arconte/05.jpg",
+      "category": "arconte",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto3.arc"
+      ],
+      "mentionCount": 1,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 15074,
+          "snippet": "img1 = \"assets/arconte/05.jpg\""
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/arconte/06.jpg",
+      "category": "arconte",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto3.arc"
+      ],
+      "mentionCount": 1,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 15075,
+          "snippet": "img2 = \"assets/arconte/06.jpg\""
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/arconte/07.jpg",
+      "category": "arconte",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto3.arc"
+      ],
+      "mentionCount": 1,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 15076,
+          "snippet": "img3 = \"assets/arconte/07.jpg\""
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/arconte/08.jpg",
+      "category": "arconte",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto3.arc"
+      ],
+      "mentionCount": 1,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 15077,
+          "snippet": "img4 = \"assets/arconte/08.jpg\""
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/arconte/09.jpg",
+      "category": "arconte",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto4.arc"
+      ],
+      "mentionCount": 1,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 15156,
+          "snippet": "img1 = \"assets/arconte/09.jpg\""
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/arconte/10.jpg",
+      "category": "arconte",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto4.arc"
+      ],
+      "mentionCount": 1,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 15157,
+          "snippet": "img2 = \"assets/arconte/10.jpg\""
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/arconte/11.jpg",
+      "category": "arconte",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto4.arc"
+      ],
+      "mentionCount": 1,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 15158,
+          "snippet": "img3 = \"assets/arconte/11.jpg\""
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/arconte/12.jpg",
+      "category": "arconte",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto4.arc"
+      ],
+      "mentionCount": 1,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 15159,
+          "snippet": "img4 = \"assets/arconte/12.jpg\""
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/__01.jpg",
+      "category": "madonna_hibrida",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_template.arc"
+      ],
+      "mentionCount": 1,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 17717,
+          "snippet": "img1: \"assets/madonna_hibrida/__01.jpg\""
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/__02.jpg",
+      "category": "madonna_hibrida",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_template.arc"
+      ],
+      "mentionCount": 1,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 17718,
+          "snippet": "img2: \"assets/madonna_hibrida/__02.jpg\""
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/__03.jpg",
+      "category": "madonna_hibrida",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_template.arc"
+      ],
+      "mentionCount": 1,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 17719,
+          "snippet": "img3: \"assets/madonna_hibrida/__03.jpg\""
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/__04.jpg",
+      "category": "madonna_hibrida",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_template.arc"
+      ],
+      "mentionCount": 1,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 17720,
+          "snippet": "img4: \"assets/madonna_hibrida/__04.jpg\""
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/05.jpg",
+      "category": "madonna_hibrida",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto3.arc"
+      ],
+      "mentionCount": 8,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 11723,
+          "snippet": "img1: \"assets/madonna_hibrida/05.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 11791,
+          "snippet": "\"img1\": \"assets/madonna_hibrida/05.jpg\","
+        },
+        {
+          "file": "4.txt",
+          "line": 11841,
+          "snippet": "{ \"id\": \"img1\", \"path\": \"assets/madonna_hibrida/05.jpg\" },"
+        },
+        {
+          "file": "4.txt",
+          "line": 12021,
+          "snippet": "{ \"id\": \"img1\", \"path\": \"assets/madonna_hibrida/05.jpg\" },"
+        },
+        {
+          "file": "4.txt",
+          "line": 13055,
+          "snippet": "img: \"assets/madonna_hibrida/05.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17346,
+          "snippet": "img1: \"assets/madonna_hibrida/05.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17860,
+          "snippet": "{ \"id\": \"a3_01\", \"type\": \"image\", \"src\": \"assets/madonna_hibrida/05.jpg\", \"start\": 30.0, \"duration\": 4.0, \"transition\": \"crossfade_700ms\" },"
+        },
+        {
+          "file": "4.txt",
+          "line": 17861,
+          "snippet": "{ \"id\": \"a3_02\", \"type\": \"image\", \"src\": \"assets/madonna_hibrida/05.jpg\", \"start\": 34.0, \"duration\": 5.0, \"transition\": \"crossfade_700ms\" },"
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/06.jpg",
+      "category": "madonna_hibrida",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto3.arc"
+      ],
+      "mentionCount": 9,
+      "mentions": [
+        {
+          "file": "3.txt",
+          "line": 1238,
+          "snippet": "img1: \"assets/madonna_hibrida/06.jpg\""
+        },
+        {
+          "file": "3.txt",
+          "line": 1317,
+          "snippet": "img1: \"assets/madonna_hibrida/06.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 11724,
+          "snippet": "img2: \"assets/madonna_hibrida/06.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 11792,
+          "snippet": "\"img2\": \"assets/madonna_hibrida/06.jpg\","
+        },
+        {
+          "file": "4.txt",
+          "line": 11842,
+          "snippet": "{ \"id\": \"img2\", \"path\": \"assets/madonna_hibrida/06.jpg\" },"
+        },
+        {
+          "file": "4.txt",
+          "line": 12022,
+          "snippet": "{ \"id\": \"img2\", \"path\": \"assets/madonna_hibrida/06.jpg\" },"
+        },
+        {
+          "file": "4.txt",
+          "line": 13083,
+          "snippet": "img1: \"assets/madonna_hibrida/06.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17347,
+          "snippet": "img2: \"assets/madonna_hibrida/06.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17862,
+          "snippet": "{ \"id\": \"a3_03\", \"type\": \"image\", \"src\": \"assets/madonna_hibrida/06.jpg\", \"start\": 39.0, \"duration\": 6.0, \"transition\": \"crossfade_700ms\" },"
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/07.jpg",
+      "category": "madonna_hibrida",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto3.arc"
+      ],
+      "mentionCount": 9,
+      "mentions": [
+        {
+          "file": "3.txt",
+          "line": 1239,
+          "snippet": "img2: \"assets/madonna_hibrida/07.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 11725,
+          "snippet": "img3: \"assets/madonna_hibrida/07.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 11793,
+          "snippet": "\"img3\": \"assets/madonna_hibrida/07.jpg\","
+        },
+        {
+          "file": "4.txt",
+          "line": 11843,
+          "snippet": "{ \"id\": \"img3\", \"path\": \"assets/madonna_hibrida/07.jpg\" },"
+        },
+        {
+          "file": "4.txt",
+          "line": 12023,
+          "snippet": "{ \"id\": \"img3\", \"path\": \"assets/madonna_hibrida/07.jpg\" },"
+        },
+        {
+          "file": "4.txt",
+          "line": 13084,
+          "snippet": "img2: \"assets/madonna_hibrida/07.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17348,
+          "snippet": "img3: \"assets/madonna_hibrida/07.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17863,
+          "snippet": "{ \"id\": \"a3_04\", \"type\": \"image\", \"src\": \"assets/madonna_hibrida/07.jpg\", \"start\": 45.0, \"duration\": 5.0, \"transition\": \"crossfade_700ms\" },"
+        },
+        {
+          "file": "4.txt",
+          "line": 17864,
+          "snippet": "{ \"id\": \"a3_05\", \"type\": \"image\", \"src\": \"assets/madonna_hibrida/07.jpg\", \"start\": 50.0, \"duration\": 6.0, \"transition\": \"crossfade_700ms\" },"
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/08.jpg",
+      "category": "madonna_hibrida",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto3.arc"
+      ],
+      "mentionCount": 8,
+      "mentions": [
+        {
+          "file": "3.txt",
+          "line": 1240,
+          "snippet": "img3: \"assets/madonna_hibrida/08.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 11726,
+          "snippet": "img4: \"assets/madonna_hibrida/08.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 11794,
+          "snippet": "\"img4\": \"assets/madonna_hibrida/08.jpg\","
+        },
+        {
+          "file": "4.txt",
+          "line": 11844,
+          "snippet": "{ \"id\": \"img4\", \"path\": \"assets/madonna_hibrida/08.jpg\" }"
+        },
+        {
+          "file": "4.txt",
+          "line": 12024,
+          "snippet": "{ \"id\": \"img4\", \"path\": \"assets/madonna_hibrida/08.jpg\" }"
+        },
+        {
+          "file": "4.txt",
+          "line": 13085,
+          "snippet": "img3: \"assets/madonna_hibrida/08.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17349,
+          "snippet": "img4: \"assets/madonna_hibrida/08.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17865,
+          "snippet": "{ \"id\": \"a3_06\", \"type\": \"image\", \"src\": \"assets/madonna_hibrida/08.jpg\", \"start\": 56.0, \"duration\": 4.0 },"
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/09.jpg",
+      "category": "madonna_hibrida",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto4.arc"
+      ],
+      "mentionCount": 6,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 12258,
+          "snippet": "img1: \"assets/madonna_hibrida/09.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 12337,
+          "snippet": "\"img1\": \"assets/madonna_hibrida/09.jpg\","
+        },
+        {
+          "file": "4.txt",
+          "line": 12418,
+          "snippet": "{ \"id\": \"img1\", \"path\": \"assets/madonna_hibrida/09.jpg\" },"
+        },
+        {
+          "file": "4.txt",
+          "line": 17410,
+          "snippet": "img1: \"assets/madonna_hibrida/09.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17589,
+          "snippet": "img1: \"assets/madonna_hibrida/09.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17869,
+          "snippet": "{ \"id\": \"a4_01\", \"type\": \"image\", \"src\": \"assets/madonna_hibrida/09.jpg\", \"start\": 60.0, \"duration\": 4.0, \"transition\": \"crossfade_600ms\" },"
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/10.jpg",
+      "category": "madonna_hibrida",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto4.arc"
+      ],
+      "mentionCount": 7,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 12259,
+          "snippet": "img2: \"assets/madonna_hibrida/10.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 12338,
+          "snippet": "\"img2\": \"assets/madonna_hibrida/10.jpg\","
+        },
+        {
+          "file": "4.txt",
+          "line": 12419,
+          "snippet": "{ \"id\": \"img2\", \"path\": \"assets/madonna_hibrida/10.jpg\" },"
+        },
+        {
+          "file": "4.txt",
+          "line": 17411,
+          "snippet": "img2: \"assets/madonna_hibrida/10.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17590,
+          "snippet": "img2: \"assets/madonna_hibrida/10.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17870,
+          "snippet": "{ \"id\": \"a4_02\", \"type\": \"image\", \"src\": \"assets/madonna_hibrida/10.jpg\", \"start\": 64.0, \"duration\": 5.0, \"transition\": \"crossfade_600ms\" },"
+        },
+        {
+          "file": "4.txt",
+          "line": 17871,
+          "snippet": "{ \"id\": \"a4_03\", \"type\": \"image\", \"src\": \"assets/madonna_hibrida/10.jpg\", \"start\": 69.0, \"duration\": 6.0, \"transition\": \"crossfade_600ms\" },"
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/11.jpg",
+      "category": "madonna_hibrida",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto4.arc"
+      ],
+      "mentionCount": 6,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 12260,
+          "snippet": "img3: \"assets/madonna_hibrida/11.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 12339,
+          "snippet": "\"img3\": \"assets/madonna_hibrida/11.jpg\","
+        },
+        {
+          "file": "4.txt",
+          "line": 12420,
+          "snippet": "{ \"id\": \"img3\", \"path\": \"assets/madonna_hibrida/11.jpg\" },"
+        },
+        {
+          "file": "4.txt",
+          "line": 17412,
+          "snippet": "img3: \"assets/madonna_hibrida/11.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17591,
+          "snippet": "img3: \"assets/madonna_hibrida/11.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17872,
+          "snippet": "{ \"id\": \"a4_04\", \"type\": \"image\", \"src\": \"assets/madonna_hibrida/11.jpg\", \"start\": 75.0, \"duration\": 5.0, \"transition\": \"crossfade_600ms\" },"
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna_hibrida/12.jpg",
+      "category": "madonna_hibrida",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto4.arc"
+      ],
+      "mentionCount": 7,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 12261,
+          "snippet": "img4: \"assets/madonna_hibrida/12.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 12340,
+          "snippet": "\"img4\": \"assets/madonna_hibrida/12.jpg\","
+        },
+        {
+          "file": "4.txt",
+          "line": 12421,
+          "snippet": "{ \"id\": \"img4\", \"path\": \"assets/madonna_hibrida/12.jpg\" }"
+        },
+        {
+          "file": "4.txt",
+          "line": 17413,
+          "snippet": "img4: \"assets/madonna_hibrida/12.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17592,
+          "snippet": "img4: \"assets/madonna_hibrida/12.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17873,
+          "snippet": "{ \"id\": \"a4_05\", \"type\": \"image\", \"src\": \"assets/madonna_hibrida/12.jpg\", \"start\": 80.0, \"duration\": 6.0, \"transition\": \"crossfade_600ms\" },"
+        },
+        {
+          "file": "4.txt",
+          "line": 17874,
+          "snippet": "{ \"id\": \"a4_06\", \"type\": \"image\", \"src\": \"assets/madonna_hibrida/12.jpg\", \"start\": 86.0, \"duration\": 4.0 }"
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna/final_frame.jpg",
+      "category": "madonna",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "mentionCount": 4,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 9298,
+          "snippet": "\"src\": \"assets/madonna/final_frame.jpg\","
+        },
+        {
+          "file": "4.txt",
+          "line": 9491,
+          "snippet": "final_frame: \"assets/madonna/final_frame.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16599,
+          "snippet": "final_frame: \"assets/madonna/final_frame.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16861,
+          "snippet": "\"src\": \"assets/madonna/final_frame.jpg\","
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna/frame_01.jpg",
+      "category": "madonna",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "mentionCount": 4,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 9235,
+          "snippet": "\"src\": \"assets/madonna/frame_01.jpg\","
+        },
+        {
+          "file": "4.txt",
+          "line": 9484,
+          "snippet": "frame_01: \"assets/madonna/frame_01.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16592,
+          "snippet": "frame_01: \"assets/madonna/frame_01.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16798,
+          "snippet": "\"src\": \"assets/madonna/frame_01.jpg\","
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna/frame_02.jpg",
+      "category": "madonna",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "mentionCount": 4,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 9244,
+          "snippet": "\"src\": \"assets/madonna/frame_02.jpg\","
+        },
+        {
+          "file": "4.txt",
+          "line": 9485,
+          "snippet": "frame_02: \"assets/madonna/frame_02.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16593,
+          "snippet": "frame_02: \"assets/madonna/frame_02.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16807,
+          "snippet": "\"src\": \"assets/madonna/frame_02.jpg\","
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna/frame_03.jpg",
+      "category": "madonna",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "mentionCount": 4,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 9253,
+          "snippet": "\"src\": \"assets/madonna/frame_03.jpg\","
+        },
+        {
+          "file": "4.txt",
+          "line": 9486,
+          "snippet": "frame_03: \"assets/madonna/frame_03.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16594,
+          "snippet": "frame_03: \"assets/madonna/frame_03.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16816,
+          "snippet": "\"src\": \"assets/madonna/frame_03.jpg\","
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna/frame_04.jpg",
+      "category": "madonna",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "mentionCount": 4,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 9262,
+          "snippet": "\"src\": \"assets/madonna/frame_04.jpg\","
+        },
+        {
+          "file": "4.txt",
+          "line": 9487,
+          "snippet": "frame_04: \"assets/madonna/frame_04.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16595,
+          "snippet": "frame_04: \"assets/madonna/frame_04.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16825,
+          "snippet": "\"src\": \"assets/madonna/frame_04.jpg\","
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna/frame_05.jpg",
+      "category": "madonna",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "mentionCount": 4,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 9271,
+          "snippet": "\"src\": \"assets/madonna/frame_05.jpg\","
+        },
+        {
+          "file": "4.txt",
+          "line": 9488,
+          "snippet": "frame_05: \"assets/madonna/frame_05.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16596,
+          "snippet": "frame_05: \"assets/madonna/frame_05.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16834,
+          "snippet": "\"src\": \"assets/madonna/frame_05.jpg\","
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna/frame_06.jpg",
+      "category": "madonna",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "mentionCount": 4,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 9280,
+          "snippet": "\"src\": \"assets/madonna/frame_06.jpg\","
+        },
+        {
+          "file": "4.txt",
+          "line": 9489,
+          "snippet": "frame_06: \"assets/madonna/frame_06.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16597,
+          "snippet": "frame_06: \"assets/madonna/frame_06.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16843,
+          "snippet": "\"src\": \"assets/madonna/frame_06.jpg\","
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "assets/madonna/frame_07.jpg",
+      "category": "madonna",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "mentionCount": 4,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 9289,
+          "snippet": "\"src\": \"assets/madonna/frame_07.jpg\","
+        },
+        {
+          "file": "4.txt",
+          "line": 9490,
+          "snippet": "frame_07: \"assets/madonna/frame_07.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16598,
+          "snippet": "frame_07: \"assets/madonna/frame_07.jpg\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16852,
+          "snippet": "\"src\": \"assets/madonna/frame_07.jpg\","
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "audio/__track.wav",
+      "category": "audio",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_template.arc"
+      ],
+      "mentionCount": 1,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 17721,
+          "snippet": "audio: \"audio/__track.wav\""
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "audio/antes_del_silencio_cantos_de_ballena.wav",
+      "category": "audio",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto2.arc"
+      ],
+      "mentionCount": 9,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 10664,
+          "snippet": "audio: \"audio/antes_del_silencio_cantos_de_ballena.wav\""
+        },
+        {
+          "file": "4.txt",
+          "line": 11213,
+          "snippet": "\"audio\": \"audio/antes_del_silencio_cantos_de_ballena.wav\""
+        },
+        {
+          "file": "4.txt",
+          "line": 11311,
+          "snippet": "\"path\": \"audio/antes_del_silencio_cantos_de_ballena.wav\","
+        },
+        {
+          "file": "4.txt",
+          "line": 11447,
+          "snippet": "audio: \"audio/antes_del_silencio_cantos_de_ballena.wav\""
+        },
+        {
+          "file": "4.txt",
+          "line": 11549,
+          "snippet": "\"path\": \"audio/antes_del_silencio_cantos_de_ballena.wav\","
+        },
+        {
+          "file": "4.txt",
+          "line": 17282,
+          "snippet": "audio: \"audio/antes_del_silencio_cantos_de_ballena.wav\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17907,
+          "snippet": "{ \"id\": \"a2_audio\", \"src\": \"audio/antes_del_silencio_cantos_de_ballena.wav\", \"start\": 0.0,  \"duration\": 30.0, \"fade_in\": 1.0, \"fade_out\": 1.5 },"
+        },
+        {
+          "file": "4.txt",
+          "line": 18689,
+          "snippet": "\"audio\": \"audio/antes_del_silencio_cantos_de_ballena.wav\""
+        },
+        {
+          "file": "4.txt",
+          "line": 18728,
+          "snippet": "\"audio\": \"audio/antes_del_silencio_cantos_de_ballena.wav\""
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "audio/ascension.wav",
+      "category": "audio",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto4.arc"
+      ],
+      "mentionCount": 7,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 12262,
+          "snippet": "audio: \"audio/ascension.wav\""
+        },
+        {
+          "file": "4.txt",
+          "line": 12341,
+          "snippet": "\"audio\": \"audio/ascension.wav\""
+        },
+        {
+          "file": "4.txt",
+          "line": 12427,
+          "snippet": "\"path\": \"audio/ascension.wav\","
+        },
+        {
+          "file": "4.txt",
+          "line": 15797,
+          "snippet": "{ \"id\": \"audio_a4\", \"path\": \"audio/ascension.wav\", \"volume\": 1.0 },"
+        },
+        {
+          "file": "4.txt",
+          "line": 17414,
+          "snippet": "audio: \"audio/ascension.wav\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17593,
+          "snippet": "audio: \"audio/ascension.wav\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17909,
+          "snippet": "{ \"id\": \"a4_audio\", \"src\": \"audio/ascension.wav\",                            \"start\": 60.0, \"duration\": 30.0, \"fade_in\": 1.0, \"fade_out\": 1.5 }"
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "audio/score_madonna_hibrida.wav",
+      "category": "audio",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "mentionCount": 4,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 9365,
+          "snippet": "\"src\": \"audio/score_madonna_hibrida.wav\","
+        },
+        {
+          "file": "4.txt",
+          "line": 9496,
+          "snippet": "musica: \"audio/score_madonna_hibrida.wav\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16604,
+          "snippet": "musica: \"audio/score_madonna_hibrida.wav\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16928,
+          "snippet": "\"src\": \"audio/score_madonna_hibrida.wav\","
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "audio/silencio_arconte_acto2.wav",
+      "category": "audio",
+      "usedBy": [
+        "pipelines/reels/kerigma_master/acto2.arc"
+      ],
+      "mentionCount": 1,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 14965,
+          "snippet": "audio: \"audio/silencio_arconte_acto2.wav\""
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "audio/transfiguracion.wav",
+      "category": "audio",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida_acto3.arc"
+      ],
+      "mentionCount": 7,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 11727,
+          "snippet": "audio: \"audio/transfiguracion.wav\""
+        },
+        {
+          "file": "4.txt",
+          "line": 11795,
+          "snippet": "\"audio\": \"audio/transfiguracion.wav\""
+        },
+        {
+          "file": "4.txt",
+          "line": 11850,
+          "snippet": "\"path\": \"audio/transfiguracion.wav\","
+        },
+        {
+          "file": "4.txt",
+          "line": 12030,
+          "snippet": "\"path\": \"audio/transfiguracion.wav\","
+        },
+        {
+          "file": "4.txt",
+          "line": 15796,
+          "snippet": "{ \"id\": \"audio_a3\", \"path\": \"audio/transfiguracion.wav\", \"volume\": 1.0 },"
+        },
+        {
+          "file": "4.txt",
+          "line": 17350,
+          "snippet": "audio: \"audio/transfiguracion.wav\""
+        },
+        {
+          "file": "4.txt",
+          "line": 17908,
+          "snippet": "{ \"id\": \"a3_audio\", \"src\": \"audio/transfiguracion.wav\",                      \"start\": 30.0, \"duration\": 30.0, \"fade_in\": 1.0, \"fade_out\": 1.5 },"
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    },
+    {
+      "ref": "audio/vo_madonna_hibrida.wav",
+      "category": "audio",
+      "usedBy": [
+        "pipelines/reels/madonna_hibrida/madonna_hibrida.arc"
+      ],
+      "mentionCount": 4,
+      "mentions": [
+        {
+          "file": "4.txt",
+          "line": 9359,
+          "snippet": "\"src\": \"audio/vo_madonna_hibrida.wav\","
+        },
+        {
+          "file": "4.txt",
+          "line": 9495,
+          "snippet": "voice_over: \"audio/vo_madonna_hibrida.wav\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16603,
+          "snippet": "voice_over: \"audio/vo_madonna_hibrida.wav\""
+        },
+        {
+          "file": "4.txt",
+          "line": 16922,
+          "snippet": "\"src\": \"audio/vo_madonna_hibrida.wav\","
+        }
+      ],
+      "status": "declared_only_in_text_corpus"
+    }
+  ]
+}

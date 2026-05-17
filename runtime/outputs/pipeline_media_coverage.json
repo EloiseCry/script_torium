@@ -1,0 +1,220 @@
+{
+  "generatedAt": "2026-04-02T19:37:18.447Z",
+  "summary": {
+    "totalArcFiles": 15,
+    "fullyCovered": 6,
+    "partiallyCovered": 5,
+    "uncovered": 4
+  },
+  "items": [
+    {
+      "file": "pipelines/reels/kerigma_master/acto0.arc",
+      "refsTotal": 5,
+      "refsPresent": 4,
+      "refsMissing": 1,
+      "coverage": 80,
+      "present": [
+        "assets/arconte/01.jpg",
+        "assets/arconte/02.jpg",
+        "assets/arconte/03.jpg",
+        "audio/silencio_arconte.wav"
+      ],
+      "missing": [
+        "assets/arconte/00.jpg"
+      ]
+    },
+    {
+      "file": "pipelines/reels/kerigma_master/acto1.arc",
+      "refsTotal": 0,
+      "refsPresent": 0,
+      "refsMissing": 0,
+      "coverage": 100,
+      "present": [],
+      "missing": []
+    },
+    {
+      "file": "pipelines/reels/kerigma_master/acto2.arc",
+      "refsTotal": 5,
+      "refsPresent": 4,
+      "refsMissing": 1,
+      "coverage": 80,
+      "present": [
+        "assets/arconte/01.jpg",
+        "assets/arconte/02.jpg",
+        "assets/arconte/03.jpg",
+        "assets/arconte/04.jpg"
+      ],
+      "missing": [
+        "audio/silencio_arconte_acto2.wav"
+      ]
+    },
+    {
+      "file": "pipelines/reels/kerigma_master/acto3.arc",
+      "refsTotal": 5,
+      "refsPresent": 1,
+      "refsMissing": 4,
+      "coverage": 20,
+      "present": [
+        "audio/silencio_arconte.wav"
+      ],
+      "missing": [
+        "assets/arconte/05.jpg",
+        "assets/arconte/06.jpg",
+        "assets/arconte/07.jpg",
+        "assets/arconte/08.jpg"
+      ]
+    },
+    {
+      "file": "pipelines/reels/kerigma_master/acto4.arc",
+      "refsTotal": 5,
+      "refsPresent": 1,
+      "refsMissing": 4,
+      "coverage": 20,
+      "present": [
+        "audio/silencio_arconte.wav"
+      ],
+      "missing": [
+        "assets/arconte/09.jpg",
+        "assets/arconte/10.jpg",
+        "assets/arconte/11.jpg",
+        "assets/arconte/12.jpg"
+      ]
+    },
+    {
+      "file": "pipelines/reels/kerigma_master/acto5.arc",
+      "refsTotal": 3,
+      "refsPresent": 3,
+      "refsMissing": 0,
+      "coverage": 100,
+      "present": [
+        "pipelines/capcut_pack/madonna_hibrida_pack/assets/01.jpg",
+        "pipelines/capcut_pack/madonna_hibrida_pack/assets/02.jpg",
+        "pipelines/capcut_pack/madonna_hibrida_pack/assets/03.jpg"
+      ],
+      "missing": []
+    },
+    {
+      "file": "pipelines/reels/kerigma_master/acto6.arc",
+      "refsTotal": 0,
+      "refsPresent": 0,
+      "refsMissing": 0,
+      "coverage": 100,
+      "present": [],
+      "missing": []
+    },
+    {
+      "file": "pipelines/reels/kerigma_silencio_arconte/kerigma_silencio_arconte_master.arc",
+      "refsTotal": 0,
+      "refsPresent": 0,
+      "refsMissing": 0,
+      "coverage": 100,
+      "present": [],
+      "missing": []
+    },
+    {
+      "file": "pipelines/reels/kerigma_silencio_arconte/reel_template.arc",
+      "refsTotal": 5,
+      "refsPresent": 5,
+      "refsMissing": 0,
+      "coverage": 100,
+      "present": [
+        "assets/arconte/01.jpg",
+        "assets/arconte/02.jpg",
+        "assets/arconte/03.jpg",
+        "assets/arconte/04.jpg",
+        "audio/silencio_arconte.wav"
+      ],
+      "missing": []
+    },
+    {
+      "file": "pipelines/reels/madonna_hibrida/madonna_hibrida.arc",
+      "refsTotal": 10,
+      "refsPresent": 0,
+      "refsMissing": 10,
+      "coverage": 0,
+      "present": [],
+      "missing": [
+        "assets/madonna/final_frame.jpg",
+        "assets/madonna/frame_01.jpg",
+        "assets/madonna/frame_02.jpg",
+        "assets/madonna/frame_03.jpg",
+        "assets/madonna/frame_04.jpg",
+        "assets/madonna/frame_05.jpg",
+        "assets/madonna/frame_06.jpg",
+        "assets/madonna/frame_07.jpg",
+        "audio/score_madonna_hibrida.wav",
+        "audio/vo_madonna_hibrida.wav"
+      ]
+    },
+    {
+      "file": "pipelines/reels/madonna_hibrida/madonna_hibrida_acto2.arc",
+      "refsTotal": 5,
+      "refsPresent": 4,
+      "refsMissing": 1,
+      "coverage": 80,
+      "present": [
+        "assets/madonna_hibrida/01.jpg",
+        "assets/madonna_hibrida/02.jpg",
+        "assets/madonna_hibrida/03.jpg",
+        "assets/madonna_hibrida/04.jpg"
+      ],
+      "missing": [
+        "audio/antes_del_silencio_cantos_de_ballena.wav"
+      ]
+    },
+    {
+      "file": "pipelines/reels/madonna_hibrida/madonna_hibrida_acto3.arc",
+      "refsTotal": 5,
+      "refsPresent": 0,
+      "refsMissing": 5,
+      "coverage": 0,
+      "present": [],
+      "missing": [
+        "assets/madonna_hibrida/05.jpg",
+        "assets/madonna_hibrida/06.jpg",
+        "assets/madonna_hibrida/07.jpg",
+        "assets/madonna_hibrida/08.jpg",
+        "audio/transfiguracion.wav"
+      ]
+    },
+    {
+      "file": "pipelines/reels/madonna_hibrida/madonna_hibrida_acto4.arc",
+      "refsTotal": 5,
+      "refsPresent": 0,
+      "refsMissing": 5,
+      "coverage": 0,
+      "present": [],
+      "missing": [
+        "assets/madonna_hibrida/09.jpg",
+        "assets/madonna_hibrida/10.jpg",
+        "assets/madonna_hibrida/11.jpg",
+        "assets/madonna_hibrida/12.jpg",
+        "audio/ascension.wav"
+      ]
+    },
+    {
+      "file": "pipelines/reels/madonna_hibrida/madonna_hibrida_master.arc",
+      "refsTotal": 0,
+      "refsPresent": 0,
+      "refsMissing": 0,
+      "coverage": 100,
+      "present": [],
+      "missing": []
+    },
+    {
+      "file": "pipelines/reels/madonna_hibrida/madonna_hibrida_template.arc",
+      "refsTotal": 5,
+      "refsPresent": 0,
+      "refsMissing": 5,
+      "coverage": 0,
+      "present": [],
+      "missing": [
+        "assets/madonna_hibrida/__01.jpg",
+        "assets/madonna_hibrida/__02.jpg",
+        "assets/madonna_hibrida/__03.jpg",
+        "assets/madonna_hibrida/__04.jpg",
+        "audio/__track.wav"
+      ]
+    }
+  ]
+}
