@@ -5,7 +5,8 @@ const allowed = new Set([
   "runtime/outputs/.gitkeep",
   "runtime/temp/.gitkeep",
   "runtime/previews/.gitkeep",
-  "runtime/orchestrator/.gitkeep"
+  "runtime/orchestrator/.gitkeep",
+  "runtime/knowledge/.gitkeep"
 ]);
 
 let stdout = "";
