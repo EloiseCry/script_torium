@@ -43,3 +43,6 @@ Thumbs.db
 # Keep source assets curated separately if needed
 assets/packs/**
 !assets/packs/.gitkeep
+
+!runtime/knowledge/
+!runtime/knowledge/.gitkeep
